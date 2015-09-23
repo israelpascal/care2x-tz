@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/ambulatory
+END
+outpatients_list_row.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/ambulatory/outpatients_list_row.tpl
+END
+outpatients_list.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/ambulatory/outpatients_list.tpl
+END
+submenu_dept.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/ambulatory/submenu_dept.tpl
+END
+submenu_generic.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/ambulatory/submenu_generic.tpl
+END
+submenu_ambulatory.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/ambulatory/submenu_ambulatory.tpl
+END
+outpatients.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/ambulatory/outpatients.tpl
+END

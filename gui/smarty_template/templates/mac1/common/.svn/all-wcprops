@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common
+END
+metaheaders.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/metaheaders.tpl
+END
+header_topblock.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/header_topblock.tpl
+END
+baseframe.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/baseframe.tpl
+END
+frameset_rtl.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/frameset_rtl.tpl
+END
+frameset_ltr.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/frameset_ltr.tpl
+END
+header.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/header.tpl
+END
+opentimes_row.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/opentimes_row.tpl
+END
+duty_plan_entry_frame.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/duty_plan_entry_frame.tpl
+END
+footer.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/footer.tpl
+END
+mainframe.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/mainframe.tpl
+END
+frameset_floatingmenu_rtl.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/frameset_floatingmenu_rtl.tpl
+END
+frameset_floatingmenu_ltr.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/frameset_floatingmenu_ltr.tpl
+END
+duty_plan.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/duty_plan.tpl
+END
+submenu_specialtools.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/submenu_specialtools.tpl
+END
+submenu_tableframe.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/submenu_tableframe.tpl
+END
+submenu_row_spacer.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/submenu_row_spacer.tpl
+END
+submenu_row.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/submenu_row.tpl
+END
+duty_plan_entry_row.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/duty_plan_entry_row.tpl
+END
+copyright.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/copyright.tpl
+END
+opentimes_table.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/common/opentimes_table.tpl
+END

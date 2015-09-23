@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/modules/pharmacy_tz/gui
+END
+gui_manage_pricelist.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/modules/pharmacy_tz/gui/gui_manage_pricelist.php
+END
+gui_pharmacy_tz_search.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/modules/pharmacy_tz/gui/gui_pharmacy_tz_search.php
+END
+gui_edit_pricesettings.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/modules/pharmacy_tz/gui/gui_edit_pricesettings.php
+END
+gui_pharmacy_tz_pending_prescriptions.php
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/modules/pharmacy_tz/gui/gui_pharmacy_tz_pending_prescriptions.php
+END
+gui_pharmacy_tz_new_product.php
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/modules/pharmacy_tz/gui/gui_pharmacy_tz_new_product.php
+END
+gui_pharmacy_tz_product_catalog.php
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/modules/pharmacy_tz/gui/gui_pharmacy_tz_product_catalog.php
+END
+gui_billing_tz.php
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/modules/pharmacy_tz/gui/gui_billing_tz.php
+END
+gui_pharmacy_tz_show_prescr.php
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/modules/pharmacy_tz/gui/gui_pharmacy_tz_show_prescr.php
+END
+gui_billing_tz_pending.php
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/modules/pharmacy_tz/gui/gui_billing_tz_pending.php
+END
+gui_pharmacy_tz.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/modules/pharmacy_tz/gui/gui_pharmacy_tz.php
+END

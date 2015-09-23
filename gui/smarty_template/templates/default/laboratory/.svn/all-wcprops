@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/laboratory
+END
+test_params.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/laboratory/test_params.tpl
+END
+chemlab_data_results.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/laboratory/chemlab_data_results.tpl
+END
+chemlab_data_results_show.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/laboratory/chemlab_data_results_show.tpl
+END
+chemlab_data_results_graph.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/laboratory/chemlab_data_results_graph.tpl
+END
+request_aftersave.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/laboratory/request_aftersave.tpl
+END
+submenu_lab.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/laboratory/submenu_lab.tpl
+END
+patient_data_basic.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/laboratory/patient_data_basic.tpl
+END
+request_pathology.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/laboratory/request_pathology.tpl
+END
+test_groups.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/laboratory/test_groups.tpl
+END

@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/news
+END
+headline_dept_news.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/news/headline_dept_news.tpl
+END
+headline_newslist.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/news/headline_newslist.tpl
+END
+headline_newslist_item2.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/news/headline_newslist_item2.tpl
+END
+headline_news.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/news/headline_news.tpl
+END
+headline_titleblock.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/news/headline_titleblock.tpl
+END
+headline.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/news/headline.tpl
+END
+headline_dept_newslist.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/news/headline_dept_newslist.tpl
+END
+headline_newslist_item.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/news/headline_newslist_item.tpl
+END

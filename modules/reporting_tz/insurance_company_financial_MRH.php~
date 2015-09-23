@@ -1,0 +1,420 @@
+<?php
+error_reporting(E_COMPILE_ERROR|E_ERROR|E_CORE_ERROR);
+require('./roots.php');
+require($root_path.'include/inc_environment_global.php');
+include($root_path.'language/en/lang_en_reporting.php');
+//require($root_path.'include/inc_environment_global.php');
+require_once($root_path.'include/care_api_classes/class_tz_insurance.php');
+
+$insurance_obj = new Insurance_tz;
+
+?>
+<head>
+<style type="text/css">
+.report{
+font-size: 10px;
+border-collapse:collapse;
+}
+</style>
+</head>
+<BODY bgcolor="#ffffff" link="#000066" alink="#cc0000" vlink="#000066">
+<form>
+<table width=100% border=0 cellspacing=0 height=100%>
+<tbody class="main">
+
+
+
+
+
+	<tr>
+
+	  <td  valign="top" align="middle" height="35">
+		   <table width="770" border=0 align="center" cellspacing="0"  class="titlebar">
+ <tr valign=top  class="titlebar" >
+  <td width="423" bgcolor="#99ccff" >
+    &nbsp;&nbsp;<font color="#330066">INSURANCE COMPANIES REPORT</font></td>
+  <td width="238" align=right bgcolor="#99ccff">
+   <a href="javascript: history.back();"><img src="../../gui/img/control/default/en/en_back2.gif" /></a>
+   <td width="103" bgcolor="#99ccff" ><a href="<?php echo $root_path;?>modules/reporting_tz/reporting_main_menu.php" ><img src="../../gui/img/control/default/en/en_close2.gif" border=0 width="103" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this,1)" onMouseOut="hilite(this,0)"></a></td>
+   </td>
+    </tr>
+ </table>
+</form>
+<!-- <P> -->
+
+<script language="javascript" src="../../js/datetimepicker.js"></script>						    
+<form id="form1" name="form1" method="post" action="">
+<table width="596" border="0" align="center" bgcolor="#CCCCFF">
+    <tr>
+      <td width="47">FROM:</td><td width="144"><input type="text" id="dfrom" name="dfrom" /></td>
+      <td width="98"><a href="javascript:NewCal('dfrom','ddmmyyyy')"><img src="../../gui/img/common/default/calendar.gif" /></a></td>
+      <td width="47">TO:</td>
+      <td width="144"><input type="text" id="dto" name="dto" /></td>
+      <td width="56"><p><a href="javascript:NewCal('dto','ddmmyyyy')"><img src="../../gui/img/common/default/calendar.gif" /></a></p></td></tr>
+      
+     
+</table>
+<table width="596" border="0" align="center" bgcolor="#CCCCFF">
+  <tr>
+    <th width="363" scope="col"><?php echo  $LDSelectCompany; ?></th>
+    <th width="67" scope="col"><?php echo $LDAdmitType; ?></th>
+    <th width="164" scope="col">&nbsp;</th>
+  </tr>
+  <tr>
+    <td><?php echo $insurance_obj->ShowAllInsurancesForQuotatuion(); ?></td>
+
+    <td><?php echo '<SELECT name="admission_id">';
+	echo '<OPTION selected value="0" >All</OPTION>';
+	echo '<OPTION value="2">Outpatient</OPTION>';
+        echo '<OPTION value="1">Inpatient</OPTION>';
+
+        echo '</SELECT>';?></td>
+    <td><input type="submit" name="show" value="SHOW"></td>
+  </tr>
+</table>
+
+</form>
+<!-- <p>&nbsp;    </p> -->
+
+<?php
+
+//SELECTION MADE BY USER
+
+//Date
+$dfrom=$_POST['dfrom'];
+$dto  =$_POST['dto'];
+
+//insurance company
+$company=$_POST['insurance'];
+
+
+
+
+
+
+//admission type, in_out_patient
+
+$in_out_patient=$_POST['admission_id'];
+
+
+
+
+switch ($in_out_patient){
+
+//inpatient
+case 1:
+$in_out_patients= 'encounter_class_nr=1';
+break;
+
+//outpatient
+case 2:
+$in_out_patients='encounter_class_nr=2';
+break;
+
+//all
+case 0:
+$in_out_patients='encounter_class_nr>0';
+break;
+
+
+default:
+
+$in_out_patients= FALSE;
+break;
+ 
+}
+
+
+
+
+//FORM VALIDATION
+if(!$dfrom || !$dto ){
+  echo '<strong>Please enter correct date and insurance company</strong>';
+exit;
+}
+
+$dfrom_unixtime=strtotime($dfrom);
+$dto_unixtime  =strtotime($dto);
+ 
+
+
+
+
+
+
+//query all the necessary data
+
+/*
+$sql_tmp_insurance_billing="CREATE TEMPORARY TABLE insurance_temp SELECT distinct cp.pid,name_first,cp.name_last,cp.date_birth,billelem.amount,billelem.price,cp.selian_pid, billelem.date_change,(billelem.amount * billelem.price) AS total_price,cp.membership_nr,ce.form_nr,ctzpricelist.item_description,ctzpricelist.item_number,ctzpricelist.purchasing_class,billelem.insurance_id,ce.encounter_class_nr,billarchive.encounter_nr FROM care_person AS cp INNER JOIN care_encounter AS ce ON ce.pid=cp.pid INNER JOIN care_tz_billing_archive AS billarchive ON billarchive.encounter_nr=ce.encounter_nr INNER JOIN care_tz_billing_archive_elem AS billelem ON billarchive.nr=billelem.nr INNER JOIN care_tz_drugsandservices AS ctzpricelist ON ctzpricelist.item_description=billelem.description WHERE $in_out_patients AND  billelem.insurance_id>0  AND  billelem.date_change BETWEEN  $dfrom_unixtime AND $dto_unixtime AND billelem.insurance_id =$company ";
+$sql_tmp_result = $db->Execute($sql_tmp_insurance_billing);
+*/
+
+
+$sql_insurance=" CREATE TEMPORARY TABLE insurance_temp SELECT distinct cp.pid,billelem.date_change AS billed_date,cp.name_first,cp.name_last,cp.date_birth,cp.selian_pid,cp.membership_nr,ce.form_nr,ce.encounter_date AS admission_date,ctzpricelist.item_description,ctzpricelist.item_number,billelem.price,ctzpricelist.purchasing_class,(billelem.amount * billelem.price) AS total_price, billelem.insurance_id,ce.encounter_class_nr FROM care_person AS cp INNER JOIN care_encounter AS ce ON ce.pid=cp.pid INNER JOIN care_tz_billing_archive AS billarchive ON billarchive.encounter_nr=ce.encounter_nr INNER JOIN care_tz_billing_archive_elem AS billelem ON billarchive.nr=billelem.nr INNER JOIN care_tz_drugsandservices AS ctzpricelist ON ctzpricelist.item_description=billelem.description WHERE billelem.date_change BETWEEN $dfrom_unixtime AND $dto_unixtime AND billelem.insurance_id=$company";
+$sql_insurance_result=$db->Execute($sql_insurance);
+
+$sql_insurance_temp="SELECT pid,billed_date,admission_date,name_first,name_last,date_birth,selian_pid,membership_nr,form_nr,item_description,price,purchasing_class,total_price FROM insurance_temp WHERE $in_out_patients AND insurance_id>0 ORDER BY pid ";
+$sql_insurance_temp_result=$db->Execute($sql_insurance_temp);
+
+/*
+$count_forms_query="SELECT DISTINCT count(form_nr) AS forms FROM insurance_temp";
+$count_forms_result= $db->Execute($count_forms_query);
+echo $count_forms_result;
+*/
+
+
+$newdateto = strtotime('-1 day', strtotime($dto));
+$newdateto = date('j-n-Y',$newdateto);
+
+$company_name="SELECT name FROM care_tz_company WHERE id = $company";
+$company_result=$db->Execute($company_name);
+while($company_row=$company_result->FetchRow()){
+     $company_names=$company_row['name'];
+}                 
+?>
+                                          
+<form>
+<table class="report" width="90%" border="1" valign="top"> 
+  <tr>
+  <th width="70">FROM:</th><th><?php echo $dfrom?></th><th width="70">TO:</th><th><?php echo $newdateto;?></th><th colspan="6"><?php echo $company_names;?></th> 
+  </tr>
+
+  <tr>
+    <th width="70" scope="col" font-size="8"> <?php   echo  $LDBilled_date;?></th>
+    <th width="70" scope="col"> <?php   echo  $LDAdmission_date;?></th>
+    <th width="136" scope="col"><?php   echo  $LDPatient;?></th>
+    <th width="136" scope="col"><?php   echo  $LDBirthDate;?></th>
+    <th width="90" scope="col"> <?php   echo  $LDSelianfilenumber;?></th>
+    <th width="137" scope="col"><?php   echo  $LDMembership_NR;?></th>
+    <th width="90" scope="col"> <?php   echo  $LDForm_NR; ?></th>
+    <th width="86" scope="col"> <?php   echo  $LDDescription;?></th>
+    <th width="82" scope="col"> <?php   echo  $LDGroup; ?></th>
+    <th width="70" scope="col"> <?php   echo  $LDPrice; ?></th>
+  </tr>
+
+<?php
+while($rows=$sql_insurance_temp_result->FetchRow()){
+$date                    =$rows['billed_date'];
+$date                    =date('j-m-Y',$date);
+$admission_date          =$rows['admission_date'];
+$admission_date          =date('j-m-Y',strtotime($admission_date ));
+$first_name              =$rows['name_first'];
+$last_name               =$rows['name_last'];
+$birth_date              =$rows['date_birth'];
+$birth_date              =date('j-m-Y',strtotime($birth_date )); 
+$registration_nr         =$rows['selian_pid'];
+$membership_nr           =$rows['membership_nr'];
+$form_nr                 =$rows['form_nr'];
+$item_name               =$rows['item_description'];
+$price                   =$rows['price'];
+$group                   =$rows['purchasing_class'];
+$total                   =$rows['total_price'];
+//echo $date.' '.$first_name.' '.$last_name.' '.$registration_nr.' '.$membership_nr.' '.$form_nr.' '.$item_name.' '.$price.' '.$group.' '.$total.'<br>';
+echo '<tr>
+    <td>&nbsp;'.$date.'</td>
+     <td>&nbsp;'.$admission_date.'</td>
+    <td>&nbsp;'.$first_name.' '.$last_name .'</td>
+    <td>&nbsp;'.$birth_date.'</td>
+    <td>&nbsp;'.$registration_nr.'</td>
+    <td>&nbsp;'.$membership_nr.'</td>
+    <td>&nbsp;'.$form_nr.'</td>
+    <td>&nbsp;'.$item_name .'</td>
+    <td>&nbsp;'.$group .'</td>
+    <td>&nbsp;'.$total.'</td>
+  </tr>';
+
+
+}
+echo '</table>';
+?>  
+<?php
+
+//total for lab
+
+$lab_query="SELECT SUM(total_price) AS total_lab FROM insurance_temp WHERE purchasing_class='labtest'";
+$lab_result=$db->Execute($lab_query);
+while($lab_rows=$lab_result->FetchRow()){
+if(isset($lab_rows['total_lab'])){
+$lab_total=$lab_rows['total_lab'];
+}else{
+$lab_total=0;
+}
+}
+
+
+
+//total for radiology
+
+$radio_query="SELECT SUM(total_price) AS total_radio FROM insurance_temp WHERE purchasing_class='xray'";
+$radio_result=$db->Execute($radio_query);
+while($radio_rows=$radio_result->FetchRow()){
+if(isset($radio_rows['total_radio'])){
+$radio_total=$radio_rows['total_radio'];
+}else{
+$radio_total=0;
+}
+}
+
+//total drugs
+
+$drugs_query="SELECT SUM(total_price) AS total_drugs FROM insurance_temp WHERE purchasing_class='drug_list'";
+$drugs_result=$db->Execute($drugs_query);
+while($drugs_rows=$drugs_result->FetchRow()){
+if(isset($drugs_rows['total_drugs'])){
+$drugs_total=$drugs_rows['total_drugs']; 
+}else{
+$drugs_total=0;
+} 
+
+}
+
+//total for dental
+$dental_query="SELECT SUM(total_price) AS total_dental FROM insurance_temp WHERE purchasing_class='dental'";
+$dental_result=$db->Execute($dental_query);
+while($dental_rows=$dental_result->FetchRow()){
+if(isset($dental_rows['total_dental'])){
+$dental_total=$dental_rows['total_dental'];
+}else{                                                           
+$dental_total=0;
+}
+}
+
+
+
+//total for bed
+$bed_query="SELECT SUM(total_price) AS total_bed FROM insurance_temp WHERE item_number LIKE 'B%' AND purchasing_class='service'";
+$bed_result=$db->Execute($bed_query);
+while($bed_rows=$bed_result->FetchRow()){
+if(isset($bed_rows['total_bed'])){
+$bed_total=$bed_rows['total_bed'];
+}else{
+$bed_total=0;
+}
+}
+
+//consultation a.k.a block payment
+$cons_query="SELECT SUM(total_price) AS total_cons FROM insurance_temp WHERE item_description LIKE 'cons-%' AND purchasing_class='service'";
+$cons_result=$db->Execute($cons_query);
+while($cons_rows=$cons_result->FetchRow()){
+if(isset($cons_rows['total_cons'])){
+$cons_total=$cons_rows['total_cons'];
+}else{
+$cons_total=0;
+}
+}
+
+//supplies
+$supplies_query="SELECT SUM(total_price) AS total_supplies FROM insurance_temp WHERE purchasing_class='supplies'";
+$supplies_result=$db->Execute($supplies_query);
+while($supplies_rows=$supplies_result->FetchRow()){
+if(isset($supplies_rows['total_supplies'])){
+$supplies_total=$supplies_rows['total_supplies'];
+}else{
+$supplies_total=0;
+}
+}
+
+//ICU
+$icu_query="SELECT SUM(total_price) AS total_icu FROM insurance_temp WHERE item_description LIKE 'ICU%'  AND purchasing_class='service'";
+$icu_result=$db->Execute($icu_query);
+while($icu_rows=$icu_result->FetchRow()){
+if(isset($icu_rows['total_icu'])){
+$icu_total=$icu_rows['total_icu'];
+}else{
+$icu_total=0;
+}
+}
+
+//minor procedure
+$minor_proc_query="SELECT SUM(total_price) AS total_minor_proc  FROM insurance_temp WHERE purchasing_class='minor_proc_op' OR purchasing_class='eye-service'";
+$minor_proc_result=$db->Execute($minor_proc_query);
+while($minor_proc_rows=$minor_proc_result->FetchRow()){
+    if(isset($minor_proc_rows['total_minor_proc'])){
+     $minor_proc_total=$minor_proc_rows['total_minor_proc'];
+       
+    }else{
+     $minor_proc_total=0; 
+     }
+}
+
+//major procedure
+$major_proc_query="SELECT SUM(total_price) AS total_major_proc  FROM insurance_temp WHERE purchasing_class='surgical_op'";
+$major_proc_result=$db->Execute($major_proc_query);
+while($major_proc_rows=$major_proc_result->FetchRow()){
+    if(isset($major_proc_rows['total_major_proc'])){
+      $major_proc_total=$major_proc_rows['total_major_proc'];
+     }else{
+      $major_proc_total=0;
+      }
+}
+
+//physiotherapy
+$physio_query="SELECT SUM(total_price) AS total_physio FROM insurance_temp WHERE item_number LIKE 'Phy%' AND purchasing_class='service'";
+$physio_result=$db->Execute($physio_query);
+while($physio_rows=$physio_result->FetchRow()){
+      if(isset($physio_rows['total_physio'])){
+      $physio_total=$physio_rows['total_physio'];
+      }else{
+      $physio_total=0;
+       }   
+}
+
+
+
+//sum for all items
+$grand_total=$lab_total+$radio_total+$drugs_total+$dental_total+$bed_total+$cons_total+$minor_proc_total+$major_proc_total+$supplies_total+$icu_total+$physio_total;
+
+$newdateto = strtotime('-1 day', strtotime($dto));
+$newdateto = date('j-n-Y',$newdateto);
+
+
+echo $company_names;
+?>            
+<p>FROM:<?php echo $dfrom.'   ';  ?> TO:<?php echo $newdateto;?></p>
+<table width="90%" border="1">
+  <tr>
+    <th width="89" scope="col"><?php echo $LDLab;?></th>
+    <th width="89" scope="col"><?php echo $LDRadilogy;?></th>
+    <th width="89" scope="col"><?php echo $LDDrugs;?></th>
+    <th width="89" scope="col"><?php echo $LDDental;?></th>
+    <th width="89" scope="col"><?php echo $LDBed;?></th>
+    <th width="89" scope="col"><?php echo $LDConsult;?></th>
+    <th width="89" scope="col"><?php echo $LDMinProc; ?></th>
+    <th width="89" scope="col"><?php echo $LDProcSurg;?></th>
+    <th width="89" scope="col"><?php echo $LDConsum;?></th>
+    <th width="89" scope="col"><?php echo $LDICU;?></th>
+    <th width="89" scope="col"><?php echo $LDPhysiotherapy;?></th>
+    <th width="89" scope="col"><?php echo $LDTotal;?></th>
+  </tr>
+  <tr>
+    <td>&nbsp;<?php echo $lab_total; ?></td>
+    <td>&nbsp;<?php echo $radio_total;?></td>
+    <td>&nbsp;<?php echo $drugs_total;?></td>
+    <td>&nbsp;<?php echo $dental_total;?></td>
+    <td>&nbsp;<?php echo $bed_total;?></td>
+    <td>&nbsp;<?php echo $cons_total;?></td>
+    <td>&nbsp;<?php echo $minor_proc_total;?></td>
+    <td>&nbsp;<?php echo $major_proc_total;?></td>
+    <td>&nbsp;<?php echo $supplies_total;?></td>
+    <td>&nbsp;<?php echo $icu_total;?></td>
+    <td>&nbsp;<?php echo $physio_total;?></td>
+    <td>&nbsp;<?php echo $grand_total;?></td>
+  </tr>
+</table>
+</form>
+<p>Printed by ..........................................................................................</p>
+<p>&nbsp;</p>
+<p>Authorized by......................................................................................</p>
+<p>&nbsp;</p>
+
+<?php 
+?>
+ <p>&nbsp;   </p>
+   
+     <input type="button" name="print" value="PRINT" onclick="window.print(form2)" />
+     
+</BODY>   
+
+
+
+

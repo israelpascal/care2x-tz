@@ -1,0 +1,153 @@
+10
+
+dir
+7117
+https://care2002.svn.sourceforge.net/svnroot/care2002/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1
+https://care2002.svn.sourceforge.net/svnroot/care2002
+
+
+
+2011-08-09T15:45:25.484358Z
+7110
+nakei
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+dfe0a504-e60e-0410-a6f1-ba34f8989dbf
+
+ambulatory
+dir
+
+or
+dir
+
+registration_admission
+dir
+
+cafeteria
+dir
+
+tech
+dir
+
+main
+dir
+
+tags.php
+file
+
+
+
+
+2011-08-10T14:46:24.715744Z
+afbaff14d09941ca7f2ef89a08f4f964
+2011-08-09T15:45:25.484358Z
+7110
+nakei
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+354
+
+debug.tpl
+file
+
+
+
+
+2011-08-10T14:46:24.715744Z
+889fbc4772a9a852cc759e00ec587372
+2011-08-09T15:45:25.484358Z
+7110
+nakei
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5053
+
+nursing
+dir
+
+forms
+dir
+
+common
+dir
+
+radiology
+dir
+
+system_admin
+dir
+
+appointment
+dir
+
+med_depot
+dir
+
+products
+dir
+
+pharmacy
+dir
+
+medocs
+dir
+
+news
+dir
+
+doctors
+dir
+
+laboratory
+dir
+

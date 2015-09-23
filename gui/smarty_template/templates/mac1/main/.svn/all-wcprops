@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/main
+END
+login_config.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/main/login_config.tpl
+END
+config_options.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/main/config_options.tpl
+END
+passcheck_entry_mask.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/mac1/main/passcheck_entry_mask.tpl
+END

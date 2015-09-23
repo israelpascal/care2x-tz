@@ -1,0 +1,29 @@
+
+<?php
+//error_reporting(E_COMPILE_ERROR|E_ERROR|E_CORE_ERROR);
+require('./roots.php');
+//require($root_path.'include/inc_front_chain_lang.php');
+//require_once($root_path.'gui/smarty_template/smarty_care.class.php');
+
+ 
+require($root_path.'include/care_api_classes/class_tz_diagnostics.php');
+include_once($root_path.'include/care_api_classes/class_person.php');
+
+$diagnostic_obj = new Diagnostics;
+$diagnostic_obj->displaynames($pid);
+
+
+
+//echo "<h1><strong>Diagnosis</strong></h1>";
+$diagnostic_obj->Display_chartfolder_Diagnoses($pid);
+//echo "<h1><strong>Prescriptions</strong></h1>";
+include('/labor_datalist_prescription.php');
+
+
+
+
+
+
+
+?>
+

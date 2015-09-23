@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing
+END
+ward_occupancy.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 127
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing/ward_occupancy.tpl
+END
+ward_create_form.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing/ward_create_form.tpl
+END
+ward_manage_submenu.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing/ward_manage_submenu.tpl
+END
+ward_occupancy_list_row.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing/ward_occupancy_list_row.tpl
+END
+nursing-schnellansicht.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing/nursing-schnellansicht.tpl
+END
+nursing.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing/nursing.tpl
+END
+ward_transferbed_list.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 134
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing/ward_transferbed_list.tpl
+END
+basic_data_admit.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing/basic_data_admit.tpl
+END
+discharge_patient_info.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing/discharge_patient_info.tpl
+END
+ward_occupancy_list.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing/ward_occupancy_list.tpl
+END
+ward_profile.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing/ward_profile.tpl
+END
+ward_transferbed_list_row.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing/ward_transferbed_list_row.tpl
+END
+discharge_patient_form.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/nursing/discharge_patient_form.tpl
+END

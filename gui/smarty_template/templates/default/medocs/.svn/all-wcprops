@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/medocs
+END
+form.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/medocs/form.tpl
+END
+main.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/medocs/main.tpl
+END
+main_plain.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/medocs/main_plain.tpl
+END
+tabs.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 116
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/medocs/tabs.tpl
+END
+docslist_row.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/medocs/docslist_row.tpl
+END
+docslist_frame.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/medocs/docslist_frame.tpl
+END

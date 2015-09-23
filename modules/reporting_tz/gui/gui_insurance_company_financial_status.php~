@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.0//EN" "html.dtd">
+<HTML>
+<HEAD>
+ <TITLE><?php echo $LDReportingModule; ?></TITLE>
+ <meta name="Description" content="Hospital and Healthcare Integrated Information System - CARE2x">
+ <meta name="Author" content="Robert Meggle">
+ <meta name="Generator" content="various: Quanta, AceHTML 4 Freeware, NuSphere, PHP Coder">
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+  	<script language="javascript" >
+<!-- 
+function gethelp(x,s,x1,x2,x3,x4)
+{
+	if (!x) x="";
+	urlholder="../../main/help-router.php?sid=<?php echo sid;?>&lang=$lang&helpidx="+x+"&src="+s+"&x1="+x1+"&x2="+x2+"&x3="+x3+"&x4="+x4;
+	helpwin=window.open(urlholder,"helpwin","width=790,height=540,menubar=no,resizable=yes,scrollbars=yes");
+	window.helpwin.moveTo(0,0);
+}
+    function printOut(start_timeframe, end_timeframe, admission, bill_type)
+    {
+    	urlholder="./reporting_pharmacy.php?printout=TRUE&start_timeframe="+start_timeframe+"&end_timeframe="+end_timeframe+"&admission="+admission+"&bill_type="+bill_type;
+    	testprintout=window.open(urlholder,"printout","width=800,height=600,menubar=no,resizable=yes,scrollbars=yes");
+      	window.testprintout.moveTo(0,0);
+    }
+	
+//-->
+ <?php require($root_path.'include/inc_checkdate_lang.php'); ?>
+
+</script> 
+
+<script language="javascript" src="<?php echo $root_path; ?>js/setdatetime.js"></script>
+<script language="javascript" src="<?php echo $root_path; ?>js/checkdate.js"></script>
+<script language="javascript" src="<?php echo $root_path; ?>js/dtpick_care2x.js"></script>
+<script src="<?php print $root_path; ?>/include/_jquery.js" language="javascript"></script> 
+
+<link rel="stylesheet" href="../../css/themes/default/default.css" type="text/css">
+<script language="javascript" src="../../js/hilitebu.js"></script>
+
+<STYLE TYPE="text/css">
+A:link  {color: #000066;}
+A:hover {color: #cc0033;}
+A:active {color: #cc0000;}
+A:visited {color: #000066;}
+A:visited:active {color: #cc0000;}
+A:visited:hover {color: #cc0033;}
+</style>
+<script language="JavaScript">
+<!--
+function popPic(pid,nm){
+
+ if(pid!="") regpicwindow = window.open("../../main/pop_reg_pic.php?sid=<?php echo sid;?>&lang=$lang&pid="+pid+"&nm="+nm,"regpicwin","toolbar=no,scrollbars,width=180,height=250");
+
+}
+// -->
+</script>
+
+ 
+</HEAD>
+
+<form name="form1" method="post" action=""></p>
+        <?php require_once($root_path.$top_dir.'include/inc_gui_timeframe_date_company.php'); ?>
+        <p><br>
+          <br>
+          <br>
+        </p>
+</form>

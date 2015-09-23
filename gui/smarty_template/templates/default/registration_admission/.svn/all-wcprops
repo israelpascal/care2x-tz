@@ -1,0 +1,161 @@
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission
+END
+common_option_prescription.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/common_option_prescription.tpl
+END
+admit_plain.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/admit_plain.tpl
+END
+admit_form.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/admit_form.tpl
+END
+common_report.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/common_report.tpl
+END
+common_norecord.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/common_norecord.tpl
+END
+reg_search_list_row.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/reg_search_list_row.tpl
+END
+report_frame.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/report_frame.tpl
+END
+reg_tabs.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/reg_tabs.tpl
+END
+admit_search_main.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/admit_search_main.tpl
+END
+reg_input.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/reg_input.tpl
+END
+admit_show.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/admit_show.tpl
+END
+reg_form.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/reg_form.tpl
+END
+reg_plain.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/reg_plain.tpl
+END
+report_row.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/report_row.tpl
+END
+person_submenu.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/person_submenu.tpl
+END
+reg_row.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/reg_row.tpl
+END
+admit_search_list_row.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/admit_search_list_row.tpl
+END
+reg_search_main.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/reg_search_main.tpl
+END
+basic_data_in_line.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/basic_data_in_line.tpl
+END
+admit_tabs.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/admit_tabs.tpl
+END
+basic_data.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/basic_data.tpl
+END
+admit_input.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/admit_input.tpl
+END
+reg_show.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/reg_show.tpl
+END
+report_input_form.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/report_input_form.tpl
+END
+reg_error_duplicate.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/reg_error_duplicate.tpl
+END
+common_option.tpl
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/svnroot/care2002/!svn/ver/7110/care2x_tz/branches/care2x_elct/gui/smarty_template/templates/default/registration_admission/common_option.tpl
+END
