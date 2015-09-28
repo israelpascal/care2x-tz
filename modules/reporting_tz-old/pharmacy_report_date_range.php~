@@ -1,0 +1,144 @@
+<?php
+//error_reporting(E_COMPILE_ERROR|E_ERROR|E_CORE_ERROR);
+require('./roots.php');
+require($root_path.'include/inc_environment_global.php');
+
+
+//PHARMACY REPORT  IS WRITTEN BY ISRAEL PASCAL
+//ELCT ICT UNIT 
+//israel.pascal10@gmail.com, +255719709660, +255767809660
+
+
+?>
+
+
+<script language="javascript" src="../../js/datetimepicker.js"></script>
+<table width=100% border=0 cellspacing=0 height=100%>
+<tbody class="main">
+
+
+
+
+
+	<tr>
+
+	  <td  valign="top" align="middle" height="35">
+		   <table width="770" border=0 align="center" cellspacing="0"  class="titlebar">
+ <tr valign=top  class="titlebar" >
+  <td width="423" bgcolor="#99ccff" >
+    &nbsp;&nbsp;<font color="#330066">PHARMACY REPORT</font></td>
+  <td width="238" align=right bgcolor="#99ccff">
+   <a href="javascript: history.back();"><img src="../../gui/img/control/default/en/en_back2.gif" /></a>
+   <td width="103" bgcolor="#99ccff" ><a href="<?php echo $root_path;?>modules/reporting_tz/reporting_main_menu.php" ><img src="../../gui/img/control/default/en/en_close2.gif" border=0 width="103" height="24" alt="" style="filter:alpha(opacity=70)" onMouseover="hilite(this,1)" onMouseOut="hilite(this,0)"></a></td>
+   </td>
+    </tr>
+ </table>
+<p>&nbsp; </p>
+			 
+<form id="form1" name="form1" method="post" action="">
+  <table width="596" border="0" align="center" bgcolor="#CCCCFF">
+    <tr>
+      <td width="81">FROM:</td>
+      <td width="144"><input type="text" id="dfrom" name="dfrom" /></td>
+      <td width="98"><a href="javascript:NewCal('dfrom','ddmmyyyy')"><img src="../../gui/img/common/default/calendar.gif" /></a></td>
+      <td width="47">TO:</td>
+      <td width="144"><input type="text" id="dto" name="dto" /></td>
+      <td width="56"><a href="javascript:NewCal('dto','ddmmyyyy')"><img src="../../gui/img/common/default/calendar.gif" /></a></td>
+      
+      <td><input type="submit" name="show" value="SHOW" /></td>
+    </tr>
+  </table>
+</form>
+      <?php
+	  $show = $_POST['show'];
+	  $dfrom=$_POST['dfrom'];
+	  $dto  =$_POST['dto'];
+	  $dfrom_timestamp =  strtotime($dfrom);
+      $dto_timestamp   =  strtotime($dto);
+	  
+	  if((!$dfrom_timestamp) || (!$dto_timestamp) ){
+		  echo 'PLEASE SELECT DATE RANGE';
+		  exit;
+		  }
+	  
+	  
+	  
+		
+		  
+		  $pharmacy_temp_query="CREATE TEMPORARY TABLE pharmacy_temp
+		   SELECT b.description,b.amount,b.price,(b.amount * b.price) AS cost
+						  FROM care_tz_billing_archive_elem AS b
+						  INNER JOIN care_tz_drugsandservices AS ds ON ds.item_description=b.description
+						  WHERE ds.purchasing_class='drug_list' AND b.date_change BETWEEN $dfrom_timestamp AND $dto_timestamp 
+						  GROUP BY b.description";
+			
+				$pharmacy_temp_result=$db->Execute($pharmacy_temp_query);
+						 
+         //Put all table rows in the variable
+		 $pharmacy_query_rows="SELECT * FROM pharmacy_temp";
+		 $pharmacy_temp_rows_result = $db->Execute($pharmacy_query_rows);						 
+			
+	                      					 
+						 //get total cost for consumed drugs
+						 $sum_cost="SELECT SUM(cost) AS totalcost 
+						            FROM pharmacy_temp";
+									
+						$totalcost_result=$db->Execute($sum_cost);
+						while($totalcost_result_rows=$totalcost_result->FetchRow()){
+							$totalcost=$totalcost_result_rows['totalcost'];
+							}
+						
+									 
+						 		 
+						  
+		       		 
+						  
+						  
+		 
+			//define color
+        $color=1;
+		//$dto minus one day
+ $newdateto = strtotime('-1 day', strtotime($dto));
+ $newdateto = date('j-m-Y',$newdateto);
+        ?>
+ <form id="form2" name="form2" method="post" action="">       
+    FROM:   <?php echo $dfrom;?>     TO:    <?php echo $newdateto;?>
+        <?php
+		   
+        echo '<table width="600" border="1" align="center" cellpadding="2" cellspacing="0">';
+	
+		
+        
+		echo '<tr><th width="400">Drug Name</th><th width="120">Qty</th><th width="220">Unit Price</th><th width="240">Total Cost</th></tr>';
+	    while($rows= $pharmacy_temp_rows_result->FetchRow() ){
+			   if($color==1){
+		           echo "<tr bgcolor='lightblue'>
+                   <td width='400'>".$rows['description']."</td><td width='120'>".$rows['amount']."</td><td width ='240'>".number_format($rows['price'],2)."</td><td width='100'>".number_format($rows['cost'],2)."</td>
+                   </tr>";
+                   // Set $color==2, for switching to other color
+                   $color="2";
+                }  
+				else{
+		             echo "<tr bgcolor='white'>
+                     <td width='400'>".$rows['description']."</td><td width='120'>".$rows['amount']."</td><td width='240'>".number_format($rows['price'],2)."</td><td width='100'>".number_format($rows['cost'],2)."</td>
+                   </tr>";
+                     // Set $color back to 1
+                     $color="1";
+		             }
+					 
+					 
+					  
+			}		       
+?>
+<table width="600" border="1" align="center" cellpadding="2" cellspacing="0">
+  <tr bgcolor="#FFFF99">
+    <td width="574" scope="col">TOTAL COST FOR CONSUMED DRUGS </td>
+    <td width="138" scope="col">&nbsp;<?php echo 'TSH.'. number_format($totalcost,2);?></td>
+  </tr>
+</table>		   	  
+	<input type="button" name="print" value="PRINT" onclick="window.print()" />
+	  </form>
+	  
+	   
+	  
+      
