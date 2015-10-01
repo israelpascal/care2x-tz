@@ -49,7 +49,3 @@ CREATE TABLE IF NOT EXISTS `care_user_roles` (
 
 INSERT INTO `care_user_roles` (`role_id`, `description`, `permission`, `modify_id`, `modify_time`, `create_id`, `create_time`) VALUES
 (1, 'System Admin', 'System_admin', 'israel', '2015-09-28 12:35:33', '', '0000-00-00 00:00:00');
-
-/*
-*
-*/
