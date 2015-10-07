@@ -52,7 +52,7 @@ input#button {
 }
 
 .footer {
-	width: *;
+	width: auto;
 	border: 2px solid #cfcfcf;
 	margin-top: 20px;
 	padding: 6px 8px 6px 8px;

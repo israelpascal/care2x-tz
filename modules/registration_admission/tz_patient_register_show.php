@@ -20,7 +20,7 @@ require_once($root_path . 'include/inc_front_chain_lang.php');
 
 $thisfile = basename($_SERVER['PHP_SELF']);
 $breakfile = 'patient.php';
-$admissionfile = 'aufnahme_start.php' . URL_APPEND;
+$admissionfile = 'aufnahme_pass.php' . URL_APPEND;
 
 # Resolve PID
 if ((!isset($pid) || !$pid) && $_SESSION['sess_pid'])

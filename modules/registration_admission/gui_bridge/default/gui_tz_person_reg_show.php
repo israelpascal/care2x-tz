@@ -18,7 +18,7 @@ echo setCharSet();
             "password": "<?php echo $nhif_pwd; ?>"
         };
         var url = "<?php echo $nhif_base; ?>/Token";
-        ProgressCreate(15);
+        ProgressCreate(10);
 //        alert('Please wait for at least 10 sec\nfor response from server.........');
         $.ajax(url, {
             type: "POST",
@@ -298,16 +298,16 @@ require($root_path . 'include/inc_css_a_hilitebu.php');
                     <?php if (!$newdata) { ?>
                         <?php
                         if ($target == "search")
-                            $newsearchfile = 'patient_register_search.php' . URL_APPEND;
+                            $newsearchfile = 'patient_register_pass.php' . URL_APPEND . '&target=search';
                         else
-                            $newsearchfile = 'patient_register_archive.php' . URL_APPEND;
+                            $newsearchfile = 'patient_register_pass.php' . URL_APPEND . '&target=archiv';
                         ?>
                         <a href="<?php echo $newsearchfile ?>"><img
                                 <?php echo createLDImgSrc($root_path, 'new_search.gif', '0', 'absmiddle') ?>></a>
                             <?php
                         }
                         ?>
-                    <a href="patient_register.php<?php echo URL_APPEND ?>&pid=<?php echo $pid ?>&update=1"><img
+                    <a href="patient_register_pass.php<?php echo URL_APPEND ?>&pid=<?php echo $pid ?>&target=update&update=1"><img
                             <?php echo createLDImgSrc($root_path, 'update_data.gif', '0', 'absmiddle') ?>></a>
                         <?php
 # If currently admitted show button link to admission data display
@@ -319,8 +319,8 @@ require($root_path . 'include/inc_css_a_hilitebu.php');
                     } elseif (!$death_date || $death_date == $dbf_nodate) {
                         ?>
                         <span class="admit_patient">
-                            <a href="<?php echo $admissionfile ?>&pid=<?php echo $pid ?>&origin=patreg_reg&encounter_class_nr=1"><img <?php echo createLDImgSrc($root_path, 'admit_inpatient.gif', '0', 'absmiddle') ?>></a>
-                            <a href="<?php echo $admissionfile ?>&pid=<?php echo $pid ?>&origin=patreg_reg&encounter_class_nr=2"><img <?php echo createLDImgSrc($root_path, 'admit_outpatient.gif', '0', 'absmiddle') ?>></a>
+                            <a href="<?php echo $admissionfile ?>&pid=<?php echo $pid ?>&origin=patreg_reg&target=admitip&encounter_class_nr=1"><img <?php echo createLDImgSrc($root_path, 'admit_inpatient.gif', '0', 'absmiddle') ?>></a>
+                            <a href="<?php echo $admissionfile ?>&pid=<?php echo $pid ?>&origin=patreg_reg&target=admitop&encounter_class_nr=2"><img <?php echo createLDImgSrc($root_path, 'admit_outpatient.gif', '0', 'absmiddle') ?>></a>
                         </span>
                         <?php
                     }
@@ -350,8 +350,8 @@ require($root_path . 'include/inc_css_a_hilitebu.php');
     <p>
     <ul>
         <FONT    SIZE=2  FACE="Arial">
-        <img <?php echo createComIcon($root_path, 'varrow.gif', '0') ?>> <a href="patient_register_search.php<?php echo URL_APPEND; ?>"><?php echo $LDPersonSearch ?></a><br>
-        <img <?php echo createComIcon($root_path, 'varrow.gif', '0') ?>> <a href="patient_register_archive.php<?php echo URL_APPEND; ?>&newdata=1&from=entry"><?php echo $LDArchive ?></a><br>
+        <img <?php echo createComIcon($root_path, 'varrow.gif', '0') ?>> <a href="patient_register_pass.php<?php echo URL_APPEND; ?>&target=search"><?php echo $LDPersonSearch ?></a><br>
+        <img <?php echo createComIcon($root_path, 'varrow.gif', '0') ?>> <a href="patient_register_pass.php<?php echo URL_APPEND; ?>&newdata=1&from=entry&target=archiv"><?php echo $LDArchive ?></a><br>
 
         <p>
             <a href="

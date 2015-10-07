@@ -128,7 +128,8 @@ class Access extends Core {
          * @global ADODB-db-link
          */
         global $db;
-# Reset all status
+
+        # Reset all status
         $this->pw_status = FALSE;
         $this->lock_status = FALSE;
         if (empty($login)) {
@@ -145,17 +146,19 @@ class Access extends Core {
         }
         $this->sql = "SELECT * FROM $this->tb_user u, $this->tb_user_roles ur WHERE u.role_id = ur.role_id "
                 . " AND login_id ='" . addslashes($login) . "'";
-//print $this->sql.'<hr />';
+        //print $this->sql.'<hr />';
         if ($result = $db->Execute($this->sql)) {
             if ($this->rec_count = $result->RecordCount()) {
                 $this->user = $result->FetchRow();
                 $this->usr_status = TRUE; # User is known
-                if ($this->user['password'] == md5($pw))
-                    $this->pw_status = TRUE;# Password is valid
-                if ((int) $this->user['lockflag'])
-                    $this->lock_status = TRUE;# Access is locked
+                if ($this->user['password'] == md5($pw)) {
+                    $this->pw_status = TRUE;    # Password is valid
+                }
+                if ((int) $this->user['lockflag']) {
+                    $this->lock_status = TRUE;
+                }# Access is locked
                 return TRUE;
-            }else {
+            } else {
                 $usr_status = FALSE;
                 return FALSE;
             }
@@ -242,9 +245,11 @@ class Access extends Core {
      * @return string
      */
     function isPermitted($area = '') {
-        if (empty($area))
+        if (empty($area)) {
             return false;
-        return (stristr($this->user['permission'], $area));
+        } else {
+            return (stristr($this->user['permission'], $area));
+        }
     }
 
     /**

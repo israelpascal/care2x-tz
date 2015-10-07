@@ -2,6 +2,7 @@
 
 $title1 = 'Permitted areas';
 $_a_0_all = 'All areas';
+$sysadmin = 'System Admin';
 
 // Group start
 //$title_adm = 'Admission';

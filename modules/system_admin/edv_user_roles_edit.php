@@ -51,10 +51,14 @@ if ($mode != '') {
         $result = $db->Execute($sql);
 
         while (list($x, $v) = each($_POST)) {
-            if (!ereg('_a_', $x))
-                continue;
-            if ($_POST[$x] != '')
+            if (!ereg('_a_', $x)) {
+                if (!ereg('Sys', $x)) {
+                    continue;
+                }
+            }
+            if ($_POST[$x] != '') {
                 $p_areas.=$v . ' ';
+            }
         }
 
         /* If permission area is available, save it */
@@ -322,8 +326,7 @@ ob_start();
                                             }
                                         }
 
-                                        echo '
-  </tr>';
+                                        echo '</tr>';
                                     }
                                     ?>
 

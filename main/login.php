@@ -20,15 +20,27 @@ $fileforward=$root_path.'modules/news/start_page.php'.URL_REDIRECT_APPEND;
 $thisfile='login.php';
 $breakfile='startframe.php'.URL_APPEND;
 
-if(!isset($pass)) $pass='';
-if(!isset($keyword)) $keyword='';
-if(!isset($userid)) $userid='';
+if (!isset($pass)) {
+    $pass = '';
+}
+if (!isset($keyword)) {
+    $keyword = '';
+}
+if (!isset($userid)) {
+    $userid = '';
+}
 $_SESSION['sess_login_userid']='';
 $_SESSION['sess_login_username']='';
 $_SESSION['sess_login_pw']='';
-if(!isset($_SESSION['sess_login_userid'])) $_SESSION['sess_login_userid'];
-if(!isset($_SESSION['sess_login_username'])) $_SESSION['sess_login_username'];
-if(!isset($_SESSION['sess_login_pw'])) $_SESSION['sess_login_pw'];
+if (!isset($_SESSION['sess_login_userid'])) {
+    $_SESSION['sess_login_userid'];
+}
+if (!isset($_SESSION['sess_login_username'])) {
+    $_SESSION['sess_login_username'];
+}
+if (!isset($_SESSION['sess_login_pw'])) {
+    $_SESSION['sess_login_pw'];
+}
 
 
 # load config options
@@ -43,8 +55,10 @@ function logentry($userid,$key,$report){
 		$logpath=$logpath.date('Y_m_d').'.log';
 		$file=fopen($logpath,'a');
 		if ($file){
-			if ($userid=='') $userid='blank';
-			$line=date('Y-m-d H:i:s').' '.'Main Login: '.$report.'  Username='.$userid.'  UserID='.$key;
+                    if ($userid == '') {
+                $userid = 'blank';
+            }
+            $line=date('Y-m-d H:i:s').' '.'Main Login: '.$report.'  Username='.$userid.'  UserID='.$key;
 			fputs($file,$line);fputs($file,"\r\n");
 			fclose($file);
 		}
@@ -127,9 +141,9 @@ if(isset($is_logged_out) && $is_logged_out) {
 <?php require($root_path.'include/inc_passcheck_mask.php') ?>
 
 <p><!--
-<img src="../img/small_help.gif" > <a href="<?php echo $root_path; ?>main/ucons.php<?php echo URL_APPEND; ?>">Was ist login?</a><br>
-<img src="../img/small_help.gif" > <a href="<?php echo $root_path; ?>main/ucons.php<?php echo URL_APPEND; ?>">Wieso soll ich mich einloggen?</a><br>
-<img src="../img/small_help.gif" > <a href="<?php echo $root_path; ?>main/ucons.php<?php echo URL_APPEND; ?>">Was bewirkt das einloggen?</a><br>
+<img src="../img/small_help.gif" > <a href="<?php // echo $root_path; ?>main/ucons.php<?php // echo URL_APPEND; ?>">Was ist login?</a><br>
+<img src="../img/small_help.gif" > <a href="<?php // echo $root_path; ?>main/ucons.php<?php // echo URL_APPEND; ?>">Wieso soll ich mich einloggen?</a><br>
+<img src="../img/small_help.gif" > <a href="<?php // echo $root_path; ?>main/ucons.php<?php // echo URL_APPEND; ?>">Was bewirkt das einloggen?</a><br>
  -->
 <p>
 <?php

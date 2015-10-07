@@ -44,7 +44,7 @@ if($parent_admit){
 if($result=$db->Execute($sql)){
 	$rows=$result->RecordCount();
 }else{
-echo $sql;
+//echo $sql;
 }
 
 $subtitle=$LDProcedures;
