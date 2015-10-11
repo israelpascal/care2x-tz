@@ -6326,7 +6326,7 @@ function SetReportingLink_Admissions($tbl1, $tbl1_key, $tbl1_key1, $tbl2, $tbl2_
                                            
          
           
-          
+$filename=fopen('./gui/downloads/detailed_revenue.csv','w');       
               
           
            
@@ -6336,21 +6336,21 @@ function SetReportingLink_Admissions($tbl1, $tbl1_key, $tbl1_key1, $tbl2, $tbl2_
   <tr bgcolor="lightgrey">
   <th width="70" >FROM:</th><th width="150" colspan="2"><?php echo date('d-m-Y H:i:s',$date_from_timestamp);?></th><th width="70">TO:</th><th width="150" colspan="3"><?php echo date('d-m-Y H:i:s',$date_to_timestamp);?></th><th colspan="6"><?php echo $company_names;?></th> 
   </tr>
-
+<?php fputcsv($filename,array('FROM:',date('d-m-Y H:i:s',$date_from_timestamp),'TO:',date('d-m-Y H:i:s',$date_to_timestamp),$company_names));?>
   <tr>
-    <th width="70" scope="col" font-size="8"> <?php   echo  $LDBilled_date;?></th>
-    <th width="70" scope="col"> <?php  echo  $LDAdmission_date;?></th>
+    <th width="70"  scope="col" font-size="8"> <?php   echo  $LDBilled_date;?></th>
+    <th width="70"  scope="col"> <?php  echo  $LDAdmission_date;?></th>
     <th width="136" scope="col"><?php  echo  $LDPatient;?></th>
     <th width="136" scope="col"><?php  echo  $LDBirthDate;?></th>
-    <th width="90" scope="col"> <?php  echo  $LDSelianfilenumber;?></th>
+    <th width="90"  scope="col"> <?php  echo  $LDSelianfilenumber;?></th>
     <th width="137" scope="col"><?php  echo  $LDMembership_NR;?></th>
-    <th width="90" scope="col"> <?php  echo  $LDForm_NR; ?></th>
-    <th width="90" scope="col"> <?php  echo  $LDPartCode; ?></th>
-    <th width="86" scope="col"> <?php  echo  $LDDescription;?></th>
-    <th width="82" scope="col"> <?php  echo  $LDGroup; ?></th>
-    <th width="82" scope="col"> <?php  echo  $LDNoOfItems; ?></th>
-    <th width="70" scope="col"> <?php  echo  $LDPrice; ?></th>
-    <th width="70" scope="col"> <?php  echo  $LDDeposit; ?></th>
+    <th width="90"  scope="col"> <?php  echo  $LDForm_NR; ?></th>
+    <th width="90"  scope="col"> <?php  echo  $LDPartCode; ?></th>
+    <th width="86"  scope="col"> <?php  echo  $LDDescription;?></th>
+    <th width="82"  scope="col"> <?php  echo  $LDGroup; ?></th>
+    <th width="82"  scope="col"> <?php  echo  $LDNoOfItems; ?></th>
+    <th width="70"  scope="col"> <?php  echo  $LDPrice; ?></th>
+    <th width="70"  scope="col"> <?php  echo  $LDDeposit; ?></th>
   </tr>  
  <?php                                             
 fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDate,$LDSelianfilenumber,$LDMembership_NR,$LDForm_NR,$LDPartCode,$LDDescription,$LDGroup,$LDNoOfItems,$LDPrice,$LDDeposit)); 
@@ -6368,7 +6368,7 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
 			   WHERE billelem.is_deposit_item!=1 AND billelem.description NOT IN('Advance','Topup','Refund') AND  billelem.date_change BETWEEN '".$date_from_timestamp."' AND '".$date_to_timestamp."' ".$and_PayType." ".$in_out_patient." GROUP BY cba.nr ORDER BY cba.encounter_nr";
 			 $receipts_list_result=$db->Execute($sql_receipts_list);
 			 
-			 
+			 //echo $sql_receipts_list;
 			 
 			 
 			 
@@ -6389,6 +6389,7 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
                        <td width="70" scope="col" bgcolor="lightblue"> </td>
                        <td width="70" scope="col" bgcolor="lightblue"> </td>
                        <td width="70" scope="col" bgcolor="lightblue"> </td>
+                      <?php //fputcsv($filename,array(date('d.M.Y',$rows_particlars['billed_date']),date('d.M.Y',strtotime($rows_particlars['admission_date'])),$rows_particlars['name_last'].' '.$rows_particlars['name_first'],date('d.M.Y',strtotime($rows_particlars['date_birth'])),$rows_particlars['selian_pid'],$rows_particlars['membership_nr'],$rows_particlars['form_nr'],'','','','','',''));?>
 				   </tr>
 				   <?php
 				   $total_items=0;
@@ -6485,6 +6486,8 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
 						   <td>null</td>
 						   
 					    </tr>  
+					   
+					    <?php fputcsv($filename,array(date('d.M.Y',$rows_particlars['billed_date']),date('d.M.Y',strtotime($rows_particlars['admission_date'])),$rows_particlars['name_last'].' '.$rows_particlars['name_first'],date('d.M.Y',strtotime($rows_particlars['date_birth'])),$rows_particlars['selian_pid'],$rows_particlars['membership_nr'],$rows_particlars['form_nr'],$rows_items['partcode'],$rows_items['description'],$class['purch_class'],$rows_items['amount'],$rows_items['total_price'],'Null')); ?>
 					 <?php    
 					 }//end while $rows_items            
 				               
@@ -6492,8 +6495,10 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
 				    <tr bgcolor="red"><td colspan="13" bgcolor="red"></td></tr>             
 			           <tr bgcolor="lightblue"><td colspan="8" ><B><font size="3">SUB TOTAL <?php echo number_format($total_items).';';?></B>&nbsp;<i>Receipt Number <?php echo $rows_particlars['nr'].';  ';?>CASHIER <?php echo $rows_particlars['User_Id'].';  ';?> </i></font></td></tr>          
 			              <tr bgcolor="red"><td colspan="13" bgcolor="red"></td></tr>
+			              <?php fputcsv($filename,array(' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ')); ?>
+			              
 				   <?php
-				
+				     
 				 }//end while $rows_receipt_list
 			 
 			                      
@@ -6507,7 +6512,8 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
 
 //***********************************START PATIENT WITH DEPOSIT****************************************************************************
                  //Patients paid advance only 
-             echo '<tr bgcolor="lightgrey"><td colspan="13" align="center">PATIENT DEPOSIT</td></tr>';             
+             echo '<tr bgcolor="lightgrey"><td colspan="13" align="center">PATIENT DEPOSIT</td></tr>'; 
+             fputcsv($filename,array('PATIENTS WITH DEPOSITS'));            
           $sql_deposit="SELECT  cp.pid, cp.name_first, cp.name_last,cp.date_birth,cp.membership_nr,ce.form_nr,cp.selian_pid,ce.encounter_nr,ce.encounter_class_nr,ce.current_ward_nr,ce.current_dept_nr,billelem.insurance_id,ce.encounter_date,billelem.date_change AS billed_date, billelem.description, billelem.amount,billelem.price 
           FROM care_person AS cp 
                INNER JOIN care_encounter AS ce ON cp.pid = ce.pid 
@@ -6535,7 +6541,7 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
                           <td width="70" scope="col" font-size="8"> <?php   //echo  $rows_dep['price'];?></td>
                           <td width="70" scope="col" font-size="8"> <?php   echo  $rows_dep['price'];?></td>
                  </tr>
-                    
+                    <?php fputcsv($filename,array(date('d.M.y',$rows_dep['billed_date']),date('d.M.y',strtotime($rows_dep['encounter_date'])),$rows_dep['name_last'].' '.$rows_dep['name_first'],date('d.M.y',strtotime($rows_dep['date_birth'])),$rows_dep['selian_pid'],$rows_dep['membership_nr'],$rows_dep['form_nr'],$rows_dep['partcode'],$class['purch_class'],$class['purch_class'],$rows_dep['amount'],'Null',$rows_dep['price'])); ?>
                     <?php
 			    
 			  } 
@@ -6546,7 +6552,7 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
 //***********************************START PATIENT TOPUP***********************************************************************************
 
  echo '<tr bgcolor="lightgrey"><td colspan="13" align="center">PATIENT TOPUP</td></tr>';
-
+                fputcsv($filename,array('PATIENTS WITH TOPUP'));  
 //patients with topup                    
             $sql_topup="SELECT  cp.pid,billelem.nr,billelem.User_Id,cp.name_first, cp.name_last,cp.date_birth,cp.membership_nr,ce.form_nr,cp.selian_pid,ce.encounter_nr,ce.encounter_class_nr,ce.current_ward_nr,ce.current_dept_nr,billelem.insurance_id,ce.encounter_date,billelem.date_change AS billed_date, billelem.description, billelem.amount,billelem.price 
           FROM care_person AS cp 
@@ -6585,7 +6591,7 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
 	                  <td bgcolor="lightblue"></td>
 	                  <td bgcolor="lightblue"></td>
 	               </tr>
-	                            
+	                <?php   //fputcsv($filename,array(date('j-m-Y',$rows_topup['billed_date']),date('j-m-Y',strtotime($rows_topup['encounter_date'] )),$rows_topup['name_first'].' '.$rows_topup['name_last'],date('j-m-Y',strtotime($rows_topup['date_birth'])),$rows_topup['selian_pid'],$rows_topup['membership_nr'],$rows_topup['form_nr'],$LDNA,'','','','',''))?>;              
                     	     
 			    <?php
 			    	
@@ -6677,16 +6683,21 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
 						   <td><?php echo $rows_topup_items['amount'];?></td>
 						   <td><?php echo $rows_topup_items['total_price'];?></td>
 						   <td>null</td>
+						   <?php   fputcsv($filename,array(date('j-m-Y',$rows_topup['billed_date']),date('j-m-Y',strtotime($rows_topup['encounter_date'] )), $rows_topup['name_first'].' '.$rows_topup['name_last'],date('j-m-Y',strtotime($rows_topup['date_birth'])),$rows_topup['selian_pid'],$rows_topup['membership_nr'],$rows_topup['form_nr'],$LDNA,$rows_topup_items['description'],$class['purch_class'],$rows_topup_items['amount'],$rows_topup_items['total_price']));?>
+						   
+						   
 						   
 					    </tr>  
 						 <?php
 						    
 						 }
-						 
+						    fputcsv($filename,array(date('j-m-Y',$rows_topup['billed_date']),date('j-m-Y',strtotime($rows_topup['encounter_date'] )),$rows_topup['name_first'].' '.$rows_topup['name_last'],date('j-m-Y',strtotime($rows_topup['date_birth'])),$rows_topup['selian_pid'],$rows_topup['membership_nr'],$rows_topup['form_nr'],$LDNA,'TOTAL TOPUP','','','',number_format($rows_topup['price'])));
 						 ?>    
 						 <tr bgcolor="red"><td colspan="13" bgcolor="red"></td></tr>             
 			           <tr bgcolor="lightblue"><td colspan="8" ><B><font size="3">DEPOSITED <?php echo number_format($amt_deposited_topup).';  ';?></B>SUB TOTAL <?php echo number_format($total_topup_items).';';?><i>Rec# <?php echo $rows_topup['nr'].';'; ?> CASHIER <?php echo $rows_topup['User_Id'];?> </i></font></td><td colspan="4"><B><font size="3"><i>FINAL BILL(TOPUP)</i>:</font></B></td><td><span style="border-bottom:double black;"><font size="3"><?php echo number_format($rows_topup['price']);?><i></i></font></span></td></tr>          
 			              <tr bgcolor="red"><td colspan="13" bgcolor="red"></td></tr>
+			              <?php  // fputcsv($filename,array('','','','','','','','','','','','',''));?>
+			              <?php   //fputcsv($filename,array('','','','','','','','DEPOSITED'.number_format($amt_deposited_topup),'SUB TOTAL'.number_format($total_topup_items),'REC#'.$rows_topup['nr'],'CASHIER '.$rows_topup['User_Id'],'','','',''.));?>
 			            <?php   
 			              
 			               
@@ -6831,12 +6842,12 @@ echo '<tr bgcolor="lightgrey"><td colspan="13" align="center">PATIENT REFUND</td
 						   <td><?php echo $rows_refund_items['amount'];?></td>
 						   <td><?php echo $rows_refund_items['total_price'];?></td>
 						   <td>null</td>
-						   
+				<?php  fputcsv($filename,array(date('j-m-Y',$rows_refund['billed_date']),date('j-m-Y',strtotime($rows_refund['encounter_date'] )), $rows_refund['name_first'].' '.$rows_refund['name_last'],date('j-m-Y',strtotime($rows_refund['date_birth'])),$rows_refund['selian_pid'],$rows_refund['membership_nr'],$rows_refund['form_nr'],$LDNA,$rows_refund_items['description'],$class['purch_class'],$rows_refund_items['amount'],$rows_refund_items['total_price']));?>		   
 					    </tr>  
 						 <?php
 						    
 						 }
-						 
+						 fputcsv($filename,array(date('j-m-Y',$rows_refund['billed_date']),date('j-m-Y',strtotime($rows_refund['encounter_date'] )),$rows_refund['name_first'].' '.$rows_refund['name_last'],date('j-m-Y',strtotime($rows_refund['date_birth'])),$rows_refund['selian_pid'],$rows_refund['membership_nr'],$rows_refund['form_nr'],$LDNA,'TOTAL REFUND','','','',number_format($rows_refund['price'])));
 						 ?>    
 						 <tr bgcolor="red"><td colspan="13" bgcolor="red"></td></tr>             
 			           <tr bgcolor="lightblue"><td colspan="8" ><B><font size="3">DEPOSITED <?php echo number_format($amt_deposited_refund);?>&nbsp;</B>SUB TOTAL <?php echo number_format($total_refund_items).';'; ?>&nbsp;Rec#<?php echo $rows_refund['nr'].'; ';?>&nbsp;CASHIER <?php echo $rows_refund['User_Id'].';'; ?></font></td><td colspan="4"><B><font size="3"><i>FINAL BILL(REFUND)</i>:</font></B></td><td><span style="border-bottom:double black;"><font size="3"><?php echo number_format($rows_refund['price']);?><i></i></font></span></td></tr>          
@@ -6876,6 +6887,7 @@ $sum_topup_refund_items=$total_refund_items+$total_topup_items;
     <th width="89" scope="col"><?php echo $LDOther;?></th>
     <th width="89" scope="col">TOTAL EXCL. DEPOSIT ITEMS</th>
     <th width="89" scope="col">TOTAL WITH DEPOSIT ITEMS</th>
+   <?php fputcsv($filename,array($LDLab,$LDDrugs,$LDRadilogy,$LDDental,$LDEye,$LDMinProc,$LDProcSurg,$LDServicesTotal,$LDConsum,$LDSuppliesLab,$LDOther,'TOTAL EXCL. DEPOSIT ITEMS','TOTAL WITH DEPOSIT ITEMS'));?>
   </tr>
   <tr>
     <th width="89" scope="col"><?php echo number_format($total_lab) ;?></th>
@@ -6895,17 +6907,31 @@ $sum_topup_refund_items=$total_refund_items+$total_topup_items;
   <tr bgcolor="black"><td colspan="13" bgcolor="red"></td></tr>
   </table>
   </p>
-  
+  <?php fputcsv($filename,array(number_format($total_lab),number_format($drugs_total),number_format($total_xray),number_format($total_dental),number_format($total_eye_service),number_format($total_minor_proc_op),number_format($total_surgical_op),number_format($total_service),number_format($total_supplies),number_format($total_supplies_laboratory),number_format($total_other),number_format($total_all_exl_deposit-$sum_topup_refund_items),number_format($total_all_exl_deposit)));?>
   <table class="report" width="90%" border="0">
 	  <tr>
-	       <th align="left"><font size="3"><span style="border-bottom:double black;">MAIN SUMMARY:</span></font></th><th align="left"><font size="5">GRAND TOTAL:&nbsp;&nbsp;&nbsp;<span style="border-bottom:double black"><?php echo number_format($total_all_exl_deposit-$sum_topup_refund_items+$sum_deposits).'/=';?></span></font></th>             
+	       <th align="left"><font size="3"><span style="border-bottom:double black;">MAIN SUMMARY:</span></font></th><th align="left"><font size="5">GRAND TOTAL:&nbsp;&nbsp;&nbsp;<span style="border-bottom:double black"><?php echo number_format($total_all_exl_deposit-$sum_topup_refund_items+$sum_deposits).'/=';?></span></font></th>          
+	          <?php fputcsv($filename,array('GRAND TOTAL:',number_format($total_all_exl_deposit-$sum_topup_refund_items+$sum_deposits)));?> 
+
+	       <?php fputcsv($filename,array('MAIN SUMMARY'));?>   
 	       <tr>
 			   <tr><td></td></tr>
 	            <tr align="left"><td><font size="2">TOTAL DEPOSIT:&nbsp;&nbsp;&nbsp;<?php echo number_format($total_deposit);?></font></td></tr>
 	            <tr><td align="left"><font size="2">TOTAL TOPUP:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo number_format($total_topup);?></span></font></td></tr>
 	            <tr><td align="left"><font size="2">TOTAL REFUND:&nbsp;&nbsp;&nbsp;&nbsp;<?php echo number_format($total_refund);?></font></td></tr>
-	            <tr><td align="left"><font size="3"><B>TOTAL SUM</B></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="3"><span style="border-bottom:double black;" ><?php echo number_format($sum_deposits); ?></span></font></td></tr>
+	            <tr><td align="left"><font size="3"><B>TOTAL SUM</B></font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size="3"><span style="border-bottom:double black;" ><?php echo number_format($sum_deposits); ?></span></font></td><td><a href="./gui/downloads/detailed_revenue.csv"><img border=0 src="../../gui/img/common/default/savedisk.gif"></a></td></tr>
 	            
+	           <?php fputcsv($filename,array('TOTAL DEPOSIT:',number_format($total_deposit)));?>
+	           <?php fputcsv($filename,array('TOTAL TOPUP:',number_format($total_topup)));?>
+	           <?php fputcsv($filename,array('TOTAL REFUND:',number_format($total_refund)));?>
+	           <?php fputcsv($filename,array('TOTAL SUM:',number_format($sum_deposits)));?> 
+
+
+                  
+	           
+	           
+	           
+	           
 	       </tr>
 	  </tr>
   </table>  
@@ -6927,7 +6953,8 @@ $sum_topup_refund_items=$total_refund_items+$total_topup_items;
 					  
                
           
-<?php        
+<?php  
+fclose($filename);      
 	
 	}
 //*************************************************************************************************************************************************	
