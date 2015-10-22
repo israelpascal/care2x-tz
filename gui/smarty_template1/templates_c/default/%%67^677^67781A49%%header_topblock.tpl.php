@@ -24,7 +24,7 @@
  alt="" <?php echo $this->_tpl_vars['dhtml']; ?>
  ></a><?php endif; ?><?php if ($this->_tpl_vars['pbBack']): ?>
    <!-- // make back button universal for consistence || dennis.mollel@yahoo.com @ 2010 -->   <a
-   href="javascript:window.back();"><img <?php echo $this->_tpl_vars['gifBack2']; ?>
+   href="javascript:window.history.back();"><img <?php echo $this->_tpl_vars['gifBack2']; ?>
  alt="" <?php echo $this->_tpl_vars['dhtml']; ?>
  ></a><?php endif; ?><?php if ($this->_tpl_vars['pbHelp']): ?><a
    href="<?php echo $this->_tpl_vars['pbHelp']; ?>

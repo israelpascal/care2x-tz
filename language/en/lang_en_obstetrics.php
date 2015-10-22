@@ -77,9 +77,9 @@ $LDEarlyNeonatalDeath='Early neonatal death';
 $LDLateNeonatalDeath='Late neonatal death';
 $LDDeathUncertainTiming='Death uncertain timing';
 $LDIntact='Intact';
-$LDFirstDegreeTear='1° tear';
-$LDSecondDegreeTear='2° tear';
-$LDThirdDegreeTear='3° tear';
+$LDFirstDegreeTear='1ï¿½ tear';
+$LDSecondDegreeTear='2ï¿½ tear';
+$LDThirdDegreeTear='3ï¿½ tear';
 $LDBreast='Breast';
 $LDFormula='Formula';
 $LDBoth='both';
@@ -131,4 +131,7 @@ $LDPlsEnterDeliveryPlace='Please enter delivery place.';
 $LDPlsSelectDeliveryMode='Please select delivery mode.';
 $LDPlsEnterDeliveryDate='Please enter delivery date.';
 $LDPlsEnterDeliveryTime='Please enter delivery time.';
+
+#2015-10-22 Mark Patrick
+$LD['saturation']='Saturation';
 ?>

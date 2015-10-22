@@ -55,7 +55,7 @@ A:visited:hover {color: #cc0033;}
 }
 
 // .class_classification {
-}
+/*}*/
 .classification {
 	font-family: Arial, Helvetica, sans-serif;
 	border-top-width: 1px;
