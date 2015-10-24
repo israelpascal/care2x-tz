@@ -20,6 +20,11 @@ $area_opt = array(
     'title_aar' => $title_aar,
     '_a_1_aarreadwrite' => $_a_1_aarreadwrite,
     /*
+     *  Group start 
+     */
+    'title_aar2' => $title_aar,
+    '_a_1_aarreadwrite ' => $_a_1_aarreadwrite,
+    /*
      * Group start
      */
     'title2' => $title2,
@@ -40,9 +45,12 @@ $area_opt = array(
      */
     'title4' => $title4,
     '_a_1_labresultsreadwrite' => $_a_1_labresultsreadwrite,
+    '_a_2_labrequest' => $_a_2_labrequest,
     '_a_2_labresultswrite' => $_a_2_labresultswrite,
     '_a_3_labresultsread' => $_a_3_labresultsread,
-    '_a_2_labparametersedit' => $_a_2_labparametersedit,
+    '_a_2_labbloodwrite' => $_a_2_labbloodwrite,
+    '_a_3_labbloodread' => $_a_3_labbloodread,
+//    '_a_2_labparametersedit' => $_a_2_labparametersedit,
     /*
      *  Group start 
      */
@@ -113,14 +121,14 @@ $area_opt = array(
     '_a_2_billallread' => $_a_2_billallread,
     '_a_2_billquotations' => $_a_2_billquotations,
     '_a_2_billreports' => $_a_2_billreports,
-    '_a_2_billpharmawrite' => $_a_2_billpharmawrite,
-    '_a_3_billpharmaread' => $_a_3_billpharmaread,
-    '_a_2_billserviceswrite' => $_a_2_billserviceswrite,
-    '_a_3_billservicesread' => $_a_3_billservicesread,
-    '_a_2_billlabwrite' => $_a_2_billlabwrite,
-    '_a_3_billlabread' => $_a_3_billlabread,
-    '_a_2_billinswrite' => $_a_2_billinswrite,
-    '_a_3_billinsread' => $_a_3_billinsread,
+//    '_a_2_billpharmawrite' => $_a_2_billpharmawrite,
+//    '_a_3_billpharmaread' => $_a_3_billpharmaread,
+//    '_a_2_billserviceswrite' => $_a_2_billserviceswrite,
+//    '_a_3_billservicesread' => $_a_3_billservicesread,
+//    '_a_2_billlabwrite' => $_a_2_billlabwrite,
+//    '_a_3_billlabread' => $_a_3_billlabread,
+//    '_a_2_billinswrite' => $_a_2_billinswrite,
+//    '_a_3_billinsread' => $_a_3_billinsread,
     /*
      *  Group start 
      */

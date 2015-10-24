@@ -11,7 +11,6 @@ $_a_1_admissionwrite = 'Admit patients, read & write';
 $_a_2_admissionread = 'Admit patients read only';
 $_a_2_archiveread = 'Search patients archive only';
 
-
 // Group start
 //$title2 = 'Nursing station';
 $title2 = 'Nursing';
@@ -29,7 +28,12 @@ $_a_3_diagnosticsrequest = 'Diagnostics Request, request only';
 // Group start
 $title4 = 'Laboratory Administration/Read,Save,Edit';
 $_a_2_labresultswrite = 'Laboratory results read & write';
+$_a_2_labrequest = 'Laboratory Test Request Create';
 $_a_3_labresultsread = 'Laboratory results read only';
+$_a_1_labresultsreadwrite = 'Laboratory Administation/Read, Write,Edit';
+$_a_2_labparametersedit = 'Laboratory Paremeters Edit';
+$_a_2_labbloodwrite = 'Blood Request Read & Create';
+$_a_3_labbloodread = 'Blood Request Read Only';
 
 // Group start
 $title5 = 'OP-Room';
@@ -122,9 +126,6 @@ $_a_2_reportingread = ' Reports Read(Menu)';
 $_a_2_clinicreportingread = 'Clinical Reports read';
 $_a_2_financialreportingread = 'Financial Reports read';
 $_a_2_systemreportingread = 'System Reports read';
-
-$_a_1_labresultsreadwrite = 'Laboratory Administation/Read, Write,Edit';
-$_a_2_labparametersedit = 'Laboratory Paremeters Edit';
 
 $title_aar = 'AAR Patients';
 $_a_1_aarreadwrite = 'AAR Patients Read';

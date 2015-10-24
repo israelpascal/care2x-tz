@@ -17,11 +17,11 @@ $allow_area = array(
     'report_clinical' => array('_a_2_clinicreportingread'),
     'report_financial' => array('_a_2_financialreportingread'),
     'report_system' => array('_a_2_systemreportingread'),
-    'bill' => array('_a_1_billallwrite', '_a_2_billallread', '_a_2_billquotations', '_a_2_billreports', '_a_2_billpharmawrite', '_a_3_billpharmaread', '_a_2_billserviceswrite', '_a_3_billservicesread', '_a_2_billlabwrite', '_a_3_billlabread', '_a_2_billinsread', '_a_2_billinswrite'),
+    'bill' => array('_a_1_billallwrite', '_a_2_billallread', '_a_2_billquotations', '_a_2_billreports'),
     'bill_r' => array('_a_2_billallread'),
     'bill_q' => array('_a_2_billquotations'),
     'bill_rep' => array('_a_2_billreports'),
-    'bill_ins' => array('_a_2_billinsread', '_a_3_billallwrite'),
+//    'bill_ins' => array('_a_2_billinsread', '_a_3_billallwrite'),
     'cafe' => array('_a_1_newsallwrite', '_a_1_newscafewrite'),
     'medocs' => array('_a_1_medocswrite'),
     'phonedir' => array('$all, $sysadmin'),
@@ -30,9 +30,12 @@ $allow_area = array(
     'op_room' => array('_a_1_opdoctorallwrite', '_a_1_opnursedutyplanwrite', '_a_2_opnurseallwrite'),
     'tech' => array('_a_1_techreception'),
     'lab_all' => array('_a_1_labresultsreadwrite', '_a_2_labresultswrite', '_a_3_labresultsread', '_a_2_labparametersedit'),
-    'lab_r' => array('_a_2_labresultswrite', '_a_3_labresultsread'),
+    'lab_request' => array('_a_2_labrequest'),
+    'lab_r' => array('_a_3_labresultsread'),
     'lab_w' => array('_a_2_labresultswrite'),
-    'lab_p' => array('_a_2_labparametersedit'),
+    'lab_bl_w' => array('_a_2_labbloodwrite'),
+    'lab_bl_r' => array('_a_3_labbloodread'),
+//    'lab_p' => array('_a_2_labparametersedit'),
     'radio' => array('_a_1_radiowrite', '_a_1_opdoctorallwrite', '_a_2_opnurseallwrite'),
     'pharma_db' => array('_a_1_pharmadbadmin'),
     'pharma_receive' => array('_a_1_pharmadbadmin', '_a_2_pharmareception'),
@@ -49,5 +52,13 @@ $allow_area = array(
     'test_diagnose' => array('_a_1_diagnosticsresultwrite', '_a_2_labresultswrite'),
     'test_receive' => array('_a_1_diagnosticsresultwrite', '_a_2_labresultswrite', '_a_2_diagnosticsreceptionwrite'),
     'test_order' => array('_a_1_diagnosticsresultwrite', '_a_2_labresultswrite', '_a_2_diagnosticsreceptionwrite', '_a_3_diagnosticsrequest')
-        )
+);
+
+/*
+ * Include a file for child areas for overriding the child permissions when
+ * assigned a superior permission i.e: parent aquires all the child permissions
+ * By: Mark Pat 24th Oct 2015
+ */
+
+include($root_path . 'global_conf/areas_children.php');
 ?>

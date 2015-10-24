@@ -21,3 +21,5 @@ INSERT INTO  `caredb`.`care_unit_measurement` (
 VALUES (
 NULL ,  '8',  'percent (%)',  'percent',  'LDPercent',  'english', NULL ,  '',  '',  '2015-10-22 04:53:44',  '',  '0000-00-00 00:00:00'
 );
+
+UPDATE  `caredb`.`care_unit_measurement` SET  `name` =  'Percentage (%)' WHERE  `care_unit_measurement`.`nr` =20;

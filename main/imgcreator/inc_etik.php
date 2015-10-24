@@ -356,9 +356,9 @@
 	// END
 */	
 	// Do not edit the following lines
-/*    ImageDestroy ($label);
+ImageDestroy ($label);
     ImageDestroy ($label2);
-    ImageDestroy ($label3);*/
+    ImageDestroy ($label3);
 /*
 }
 */

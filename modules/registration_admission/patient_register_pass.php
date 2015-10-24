@@ -33,21 +33,19 @@ switch ($target) {
         $lognote = 'Patient register ok';
         break;
     case 'search':
-        $allowedarea = $allow_area['admit_archive'];
+        $allowedarea = $allow_area['admit_read'];
         $fileforward = 'patient_register_search.php' . $append . '&origin=pass&target=search';
         $lognote = 'Patient register search ok';
         break;
     case 'archiv':
         $allowedarea = $allow_area['admit_archive'];
-        $fileforward = 'patient_register_archive.php' . $append . '&origin=pass';
+        $fileforward = 'patient_register_archive.php' . $append . '&origin=pass&target=archiv';
         $lognote = 'Patient  register archive ok';
-
         break;
     default:
-        $allowedarea = $allow_area['admit_write'];
-        $target = 'entry';
-        $lognote = 'Patient register ok';
-        $fileforward = 'patient_register.php' . $append;
+        $allowedarea = $allow_area['admit_read'];
+        $fileforward = 'patient_register_search.php' . $append . '&origin=pass&target=search';
+        $lognote = 'Patient register search ok';
 }
 
 $thisfile = basename($_SERVER['PHP_SELF']);
@@ -163,13 +161,13 @@ if (!$cfg['dhtml']) {
 
 <!-- <p>
         <?php if ($target != "entry") : ?>
-                            <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=entry"><?php echo $LDAdmWantEntry ?></a><br>
+                                                            <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=entry"><?php echo $LDAdmWantEntry ?></a><br>
         <?php endif; ?>
         <?php if ($target != "search") : ?>
-                            <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=search"><?php echo $LDAdmWantSearch ?></a><br>
+                                                            <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=search"><?php echo $LDAdmWantSearch ?></a><br>
         <?php endif; ?>
         <?php if ($target != "archiv") : ?>
-                            <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=archiv"><?php echo $LDAdmWantArchive ?></a><br>
+                                                            <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=archiv"><?php echo $LDAdmWantArchive ?></a><br>
         <?php endif; ?>
 <img <?php echo createComIcon($root_path, 'frage.gif', '0', 'absmiddle') ?>> <a href="javascript:gethelp('admission_how2start.php','<?php echo $target ?>','entry')"><?php echo $LDAdmHow2Enter ?></a><br>
 <img <?php echo createComIcon($root_path, 'frage.gif', '0', 'absmiddle') ?>> <a href="javascript:gethelp('admission_how2start.php','<?php echo $target ?>','search')"><?php echo $LDAdmHow2Search ?></a><br>

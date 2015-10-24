@@ -1,6 +1,13 @@
 <?php
 
-/* ------begin------ This protection code was suggested by Luki R. luki@karet.org ---- */
+/* ------begin------ This protection code was suggested by Luki R. luki@karet.org ----
+ * 
+ * Permission code modified by Mark Patrick markpatrick9@gmail.com
+ * 
+ * Added code to get child permissions and allow access for parent permission
+ * 
+ */
+
 if (preg_match('/inc_passcheck.php/i', $_SERVER['PHP_SELF']))
     die('<meta http-equiv="refresh" content="0; url=../">');
 /* ------end------ */
@@ -14,8 +21,9 @@ if (preg_match('/inc_passcheck.php/i', $_SERVER['PHP_SELF']))
  * See the file "copy_notice.txt" for the licence notice
  */
 function validarea(&$zeile2, $permit_type_all = 1) {
-    global $allowedarea;
+    global $allowedarea, $childareas;
 
+//    print_r($zeile2);
     if (preg_match('/System_Admin/i', $zeile2)) {  // if System_admin return true
         return 1;
     } elseif (in_array('no_allow_type_all', $allowedarea)) { // check if the type "all" is blocked, if so return false
@@ -24,8 +32,29 @@ function validarea(&$zeile2, $permit_type_all = 1) {
         return 1;
     } else {                                                                  // else scan the permission
         for ($j = 0; $j < sizeof($allowedarea); $j++) {
-            if (preg_match('/' . $allowedarea[$j] . '/i', $zeile2))
+            if (preg_match('/' . $allowedarea[$j] . '/i', $zeile2)) {
                 return 1;
+            }
+
+            /* Check if permission has children and get them for comparing
+             * Code added by Mark
+             */ else {
+                $perm = explode(' ', $zeile2);  //Assigned permissions as per role
+//                print_r($perm);
+//                echo '</br>';
+//                print_r($allowedarea[$j]);
+                foreach ($perm as $list) {
+//                    print_r($childareas[$list]);
+                    if (sizeof($childareas[$list]) > 0) { //Check if permission has children
+                        for ($k = 0; $k < sizeof($childareas[$list]); $k++) { //Iterate through each group of children
+                            if (in_array($allowedarea[$j], $childareas[$list])) {
+                                return 1;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     return 0;           // otherwise the user has no access permission in the area, return false

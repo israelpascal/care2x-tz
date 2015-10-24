@@ -313,7 +313,7 @@ require($root_path . 'include/inc_css_a_hilitebu.php');
 # If currently admitted show button link to admission data display
                         if ($current_encounter) {
                             ?>
-                        <a href="aufnahme_daten_zeigen.php<?php echo URL_APPEND ?>&encounter_nr=<?php echo $current_encounter ?>&origin=patreg_reg"><img <?php echo createLDImgSrc($root_path, 'admission_data.gif', '0', 'absmiddle') ?>></a>
+                    <a href="aufnahme_pass.php<?php echo URL_APPEND ?>&encounter_nr=<?php echo $current_encounter ?>&origin=patreg_reg&target=admitdata"><img <?php echo createLDImgSrc($root_path, 'admission_data.gif', '0', 'absmiddle') ?>></a>
                         <?php
 # Else if person still living, show button links to admission
                     } elseif (!$death_date || $death_date == $dbf_nodate) {

@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/pat/Dropbox/care2x/language/en/lang_en_aufnahme.php</file>
-            <file>file:/home/pat/Dropbox/care2x/sql-mod/measurements.sql</file>
-            <file>file:/home/pat/Dropbox/care2x/modules/registration_admission/show_weight_height.php</file>
-            <file>file:/home/pat/Dropbox/care2x/modules/registration_admission/gui_bridge/default/gui_input_show_weight_height.php</file>
-            <file>file:/home/pat/Dropbox/care2x/include/care_api_classes/class_measurement.php</file>
+            <file>file:/home/pat/Dropbox/care2x/modules/registration_admission/aufnahme_pass.php</file>
+            <file>file:/home/pat/Dropbox/care2x/modules/registration_admission/patient_register_pass.php</file>
+            <file>file:/home/pat/Dropbox/care2x/modules/registration_admission/aufnahme_daten_zeigen.php</file>
         </group>
     </open-files>
 </project-private>

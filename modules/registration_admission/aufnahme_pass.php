@@ -29,7 +29,6 @@ if (!defined('ADMISSION_EXT_TABS') || !ADMISSION_EXT_TABS) {
 }
 
 switch ($target) {
-
     case 'entry':
         $allowedarea = &$allow_area['admit_write'];
         $fileforward = 'aufnahme_start.php' . $append;
@@ -46,7 +45,7 @@ switch ($target) {
         $lognote = 'Admission ok';
         break;
     case 'search':
-        $allowedarea = &$allow_area['admit_read'];
+        $allowedarea = &$allow_area['admit_archive'];
         $fileforward = 'aufnahme_daten_such.php' . $append;
         $lognote = 'Admision search ok';
         break;
@@ -55,8 +54,13 @@ switch ($target) {
         $fileforward = 'aufnahme_list.php' . $append;
         $lognote = 'Admission archive ok';
         break;
+    case 'admitdata':
+        $allowedarea = $allow_area['admit_write'];
+        $fileforward = 'aufnahme_daten_zeigen.php' . $append . "&encounter_nr=$encounter_nr" . '&origin=pass&target=admitdata';
+        $lognote = 'Patient  register archive ok';
+        break;
     default:
-        $allowedarea = &$allow_area['admit_read'];
+        $allowedarea = &$allow_area['admit_archive'];
         $target = 'search';
         $lognote = 'Admission ok';
         $fileforward = 'aufnahme_daten_such.php' . $append;
