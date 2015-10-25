@@ -92,7 +92,7 @@ $_a_2_dutyplanallread = 'Personnel Duty/Leave plan read only';
 $title_bill = 'Billing';
 $_a_1_billallwrite = 'Billing (all areas) read & write';
 $_a_2_billallread = 'Billing (all areas) read only';
-$_a_2_billquotations = 'Billing Quotations';
+$_a_2_billquotations = 'Billing Quotations All';
 $_a_2_billreports = 'Billing Reports';
 $_a_2_billpharmawrite = 'Billing (pharmacy) read & write';
 $_a_3_billpharmaread = 'Billing (pharmacy) read only';
@@ -102,7 +102,9 @@ $_a_2_billlabwrite = 'Billing (laboratory) read & write';
 $_a_3_billlabread = 'Billing (laboratory) read only';
 $_a_2_billinswrite = 'Billing (Insurance Management) read & write';
 $_a_3_billinsread = 'Billing (Insurance Management) read only';
-
+$_a_3_billquotationsoutp = 'Billing Quotations Outpatient';
+$_a_3_billquotationsinp = 'Billing Quotations Inpatient';
+$_a_3_billquotationsden = 'Billing Quotations Dental and ART';
 
 // Group start
 $title_news = 'News';
@@ -129,4 +131,8 @@ $_a_2_systemreportingread = 'System Reports read';
 
 $title_aar = 'AAR Patients';
 $_a_1_aarreadwrite = 'AAR Patients Read';
+
+$title_outp = 'Outpatient';
+$_a_1_outpwrite = 'Outpatient read & write';
+$_a_2_outpread = 'Outpatient read only';
 ?>

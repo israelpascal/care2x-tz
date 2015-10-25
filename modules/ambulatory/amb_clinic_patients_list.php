@@ -185,13 +185,13 @@ $smarty->assign('pbHelp', "javascript:gethelp('outpatient_clinic.php','Outpatien
 # href for close button
 $smarty->assign('breakfile', $breakfile);
 
-$smarty->assign('showDiagnosis', '<a href=amb_clinic_patients_pass.php' . URL_APPEND . '&dept=' . urlencode($dept) . '&dept_nr=' . $dept_nr . '&target=diagnosis>' . $LDShowDiagnosis . '</a>');
-
-$smarty->assign('showPrescr', '<a href=amb_clinic_patients_pass.php' . URL_APPEND . '&dept=' . urlencode($dept) . '&dept_nr=' . $dept_nr . '&target=pharmacy>' . $LDShowPrescr . '</a>');
-
-$smarty->assign('showLabs', '<a href=amb_clinic_patients_pass.php' . URL_APPEND . '&dept=' . urlencode($dept) . '&dept_nr=' . $dept_nr . '&target=laboratory>' . $LDShowLabs . '</a>');
-
-$smarty->assign('showRadio', '<a href=amb_clinic_patients_pass.php' . URL_APPEND . '&dept=' . urlencode($dept) . '&dept_nr=' . $dept_nr . '&target=radiology>' . $LDShowRadio . '</a>');
+//$smarty->assign('showDiagnosis', '<a href=amb_clinic_diagnosis_list.php' . URL_APPEND . '&dept=' . urlencode($dept) . '&dept_nr=' . $dept_nr . '>' . $LDShowDiagnosis . '</a>');
+//
+//$smarty->assign('showPrescr', '<a href=amb_clinic_pharmacy_list.php' . URL_APPEND . '&dept=' . urlencode($dept) . '&dept_nr=' . $dept_nr . '>' . $LDShowPrescr . '</a>');
+//
+//$smarty->assign('showLabs', '<a href=amb_clinic_laboratory_list.php' . URL_APPEND . '&dept=' . urlencode($dept) . '&dept_nr=' . $dept_nr . '>' . $LDShowLabs . '</a>');
+//
+//$smarty->assign('showRadio', '<a href=amb_clinic_radiology_list.php' . URL_APPEND . '&dept=' . urlencode($dept) . '&dept_nr=' . $dept_nr . '>' . $LDShowRadio . '</a>');
 
 
 # Window bar title
@@ -370,15 +370,15 @@ if ($rows) {
         $smarty->assign('sTitle', '');
         $smarty->assign('sBirthDate', '');
         $smarty->assign('sPatNr', '');
-        $smarty->assign('sAdmitDataIcon', '');
-        $smarty->assign('sChartFolderIcon', '');
-        $smarty->assign('sNotesIcon', '');
-        $smarty->assign('sTransferIcon', '');
-        $smarty->assign('sDischargeIcon', '');
+//        $smarty->assign('sAdmitDataIcon', '');
+//        $smarty->assign('sChartFolderIcon', '');
+//        $smarty->assign('sNotesIcon', '');
+//        $smarty->assign('sTransferIcon', '');
+//        $smarty->assign('sDischargeIcon', '');
 
-        $smarty->assign('sFlagDiag', '');
-        $smarty->assign('sFlagDiag2', '');
-        $smarty->assign('sNoDiag', '');
+//        $smarty->assign('sFlagDiag', '');
+//        $smarty->assign('sFlagDiag2', '');
+//        $smarty->assign('sNoDiag', '');
 
         $sAstart = '';
         $sAend = '';
@@ -511,65 +511,64 @@ if ($rows) {
         }
 
 
-        if ($edit) {
-
-            /* MEROTECH:
-              Commented out for selian town clinic by Alexander Irro
-              $smarty->assign('sAdmitDataIcon','<a href="'.$root_path.'modules/registration_admission/aufnahme_pass.php'.URL_APPEND.'&target=search&fwd_nr='.$patient['encounter_nr'].'" title="'.$LDAdmissionData.' : '.$LDClk2Show.'"><img '.createComIcon($root_path,'pdata.gif','0','',TRUE).' alt="'.$LDAdmissionData.' : '.$LDClk2Show.'"></a>');
-             */
-            if ($dept_nr == 55) {
-                $o_arv_patient = new ART_patient($patient['pid']);
-                if ($o_arv_patient->is_arv_admitted($patient['pid'])) {
-                    $temp_image = "<a href=\"javascript:getARV('" . $patient['pid'] . "','" . $patient['encounter_nr'] . "')\"><img " . createComIcon($root_path, 'ball_gray.png', '0', '', TRUE) . " alt=\"inARV\"></a>";
-                } else {
-                    $temp_image = "<a href=\"javascript:getARV('" . $patient['pid'] . "','" . $patient['encounter_nr'] . "')\"><img " . createComIcon($root_path, 'ball_red.png', '0', '', TRUE) . " alt=\"not_inARV\"></a>";
-                }
-            }
-
-            if ($dept_nr == 7) {
-                //$o_arv_patient=&new ART_patient($patient['pid']);
-                //if($o_arv_patient->is_arv_admitted($patient['pid'])) {
-                //$temp_image="<a href=\"javascript:getEyeclinic('".$patient['pid']."','".$patient['encounter_nr']."')\"><img ".createComIcon($root_path,'ball_gray.png','0','',TRUE)." alt=\"inARV\"></a>";
-                //}
-                //else {
-                $temp_image = "<a href=\"javascript:getEyeclinic('" . $patient['pid'] . "','" . $patient['encounter_nr'] . "')\"><img width=17 height=17 " . createComIcon($root_path, 'eye.gif', '0', '', TRUE) . " alt=\"Eye Examination\"></a>";
-                //}
-            }
-
-            $kct = $cd_obj->CheckDiagnosis($patient['encounter_nr']);
-            if ($vct[9] == 1) {
-                if (($kct < 1) && ($patient['encounter_nr'] != '')) {
-                    $smarty->assign('sFlagDiag', ' style="background-color:yellow !important; color:#000000;" ');
-                    $smarty->assign('sFlagDiag2', ' style="background-color:yellow !important; color:#000000;" ');
-                    $smarty->assign('sNoDiag', ' [ No Dx ] ');
-                }
-            }
-
-            $smarty->assign('sARVIcon', $temp_image);
-
-            $smarty->assign('sAdmitDataIcon', '<a href="' . $root_path . 'modules/registration_admission/aufnahme_pass.php' . URL_APPEND . '&target=search&fwd_nr=' . $patient['encounter_nr'] . '" title="' . $LDAdmissionData . ' : ' . $LDClk2Show . '"><img ' . createComIcon($root_path, 'pdata.gif', '0', '', TRUE) . ' align="absmiddle" alt="' . $LDAdmissionData . ' : ' . $LDClk2Show . '"></a>');
-
-            $smarty->assign('sChartFolderIcon', '<a href="javascript:getinfo(\'' . $patient['encounter_nr'] . '\')"><img ' . createComIcon($root_path, 'open.gif', '0', '', TRUE) . ' align="absmiddle" alt="' . $LDShowPatData . '"></a>');
-
-            $display = $multi_obj->has_notes($patient['encounter_nr']);
-
-            $sBuffer = '<a href="javascript:getrem(\'' . $patient['encounter_nr'] . '\')"><img ';
-            if ($display > 0)
-                $sBuffer = $sBuffer . createComIcon($root_path, 'bubble3.gif', '0', '', TRUE);
-            else
-                $sBuffer = $sBuffer . createComIcon($root_path, 'bubble2.gif', '0', '', TRUE);
-            $sBuffer = $sBuffer . ' align="absmiddle" alt="' . $LDNoticeRW . '"></a>';
-
-            $smarty->assign('sNotesIcon', $sBuffer);
-
-            $smarty->assign('sTransferIcon', '<a href="javascript:Transfer(\'' . $patient['encounter_nr'] . '\',\'\', \'' . $pid . '\')"><img ' . createComIcon($root_path, 'xchange.gif', '0', '', TRUE) . ' align="absmiddle" alt="' . $LDTransferPatient . '"></a>');
-
-            /* MEROTECH:
-              Commented out for selian town clinic by Alexander Irro
-              $smarty->assign('sDischargeIcon','<a href="javascript:release(\''.$patient['encounter_nr'].'\')" title="'.$LDReleasePatient.'"><img '.createComIcon($root_path,'bestell.gif','0','',TRUE).' alt="'.$LDReleasePatient.'"></a>');
-             */
-        }
-
+//        if ($edit) {
+//
+//            /* MEROTECH:
+//              Commented out for selian town clinic by Alexander Irro
+//              $smarty->assign('sAdmitDataIcon','<a href="'.$root_path.'modules/registration_admission/aufnahme_pass.php'.URL_APPEND.'&target=search&fwd_nr='.$patient['encounter_nr'].'" title="'.$LDAdmissionData.' : '.$LDClk2Show.'"><img '.createComIcon($root_path,'pdata.gif','0','',TRUE).' alt="'.$LDAdmissionData.' : '.$LDClk2Show.'"></a>');
+//             */
+//            if ($dept_nr == 55) {
+//                $o_arv_patient = new ART_patient($patient['pid']);
+//                if ($o_arv_patient->is_arv_admitted($patient['pid'])) {
+//                    $temp_image = "<a href=\"javascript:getARV('" . $patient['pid'] . "','" . $patient['encounter_nr'] . "')\"><img " . createComIcon($root_path, 'ball_gray.png', '0', '', TRUE) . " alt=\"inARV\"></a>";
+//                } else {
+//                    $temp_image = "<a href=\"javascript:getARV('" . $patient['pid'] . "','" . $patient['encounter_nr'] . "')\"><img " . createComIcon($root_path, 'ball_red.png', '0', '', TRUE) . " alt=\"not_inARV\"></a>";
+//                }
+//            }
+//
+//            if ($dept_nr == 7) {
+//                //$o_arv_patient=&new ART_patient($patient['pid']);
+//                //if($o_arv_patient->is_arv_admitted($patient['pid'])) {
+//                //$temp_image="<a href=\"javascript:getEyeclinic('".$patient['pid']."','".$patient['encounter_nr']."')\"><img ".createComIcon($root_path,'ball_gray.png','0','',TRUE)." alt=\"inARV\"></a>";
+//                //}
+//                //else {
+//                $temp_image = "<a href=\"javascript:getEyeclinic('" . $patient['pid'] . "','" . $patient['encounter_nr'] . "')\"><img width=17 height=17 " . createComIcon($root_path, 'eye.gif', '0', '', TRUE) . " alt=\"Eye Examination\"></a>";
+//                //}
+//            }
+//
+//            $kct = $cd_obj->CheckDiagnosis($patient['encounter_nr']);
+//            if ($vct[9] == 1) {
+//                if (($kct < 1) && ($patient['encounter_nr'] != '')) {
+//                    $smarty->assign('sFlagDiag', ' style="background-color:yellow !important; color:#000000;" ');
+//                    $smarty->assign('sFlagDiag2', ' style="background-color:yellow !important; color:#000000;" ');
+//                    $smarty->assign('sNoDiag', ' [ No Dx ] ');
+//                }
+//            }
+//
+//            $smarty->assign('sARVIcon', $temp_image);
+//
+//            $smarty->assign('sAdmitDataIcon', '<a href="' . $root_path . 'modules/registration_admission/aufnahme_pass.php' . URL_APPEND . '&target=search&fwd_nr=' . $patient['encounter_nr'] . '" title="' . $LDAdmissionData . ' : ' . $LDClk2Show . '"><img ' . createComIcon($root_path, 'pdata.gif', '0', '', TRUE) . ' align="absmiddle" alt="' . $LDAdmissionData . ' : ' . $LDClk2Show . '"></a>');
+//
+//            $smarty->assign('sChartFolderIcon', '<a href="javascript:getinfo(\'' . $patient['encounter_nr'] . '\')"><img ' . createComIcon($root_path, 'open.gif', '0', '', TRUE) . ' align="absmiddle" alt="' . $LDShowPatData . '"></a>');
+//
+//            $display = $multi_obj->has_notes($patient['encounter_nr']);
+//
+//            $sBuffer = '<a href="javascript:getrem(\'' . $patient['encounter_nr'] . '\')"><img ';
+//            if ($display > 0)
+//                $sBuffer = $sBuffer . createComIcon($root_path, 'bubble3.gif', '0', '', TRUE);
+//            else
+//                $sBuffer = $sBuffer . createComIcon($root_path, 'bubble2.gif', '0', '', TRUE);
+//            $sBuffer = $sBuffer . ' align="absmiddle" alt="' . $LDNoticeRW . '"></a>';
+//
+//            $smarty->assign('sNotesIcon', $sBuffer);
+//
+//            $smarty->assign('sTransferIcon', '<a href="javascript:Transfer(\'' . $patient['encounter_nr'] . '\',\'\', \'' . $pid . '\')"><img ' . createComIcon($root_path, 'xchange.gif', '0', '', TRUE) . ' align="absmiddle" alt="' . $LDTransferPatient . '"></a>');
+//
+//            /* MEROTECH:
+//              Commented out for selian town clinic by Alexander Irro
+//              $smarty->assign('sDischargeIcon','<a href="javascript:release(\''.$patient['encounter_nr'].'\')" title="'.$LDReleasePatient.'"><img '.createComIcon($root_path,'bestell.gif','0','',TRUE).' alt="'.$LDReleasePatient.'"></a>');
+//             */
+//        }
         # Create the rows using ward_occupancy_list_row.tpl template
         ob_start();
         $smarty->display('ambulatory/outpatients_list_row.tpl');

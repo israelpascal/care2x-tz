@@ -22,8 +22,9 @@ $area_opt = array(
     /*
      *  Group start 
      */
-    'title_aar2' => $title_aar,
-    '_a_1_aarreadwrite ' => $_a_1_aarreadwrite,
+    'title_outp' => $title_outp,
+    '_a_1_outpwrite' => $_a_1_outpwrite,
+    '_a_2_outpread' => $_a_2_outpread,
     /*
      * Group start
      */
@@ -120,6 +121,9 @@ $area_opt = array(
     '_a_1_billallwrite' => $_a_1_billallwrite,
     '_a_2_billallread' => $_a_2_billallread,
     '_a_2_billquotations' => $_a_2_billquotations,
+    '_a_3_billquotationsoutp'=>$_a_3_billquotationsoutp,
+    '_a_3_billquotationsinp'=>$_a_3_billquotationsinp,
+    '_a_3_billquotationsden'=>$_a_3_billquotationsden,
     '_a_2_billreports' => $_a_2_billreports,
 //    '_a_2_billpharmawrite' => $_a_2_billpharmawrite,
 //    '_a_3_billpharmaread' => $_a_3_billpharmaread,

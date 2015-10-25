@@ -49,7 +49,7 @@ function validarea(&$zeile2, $permit_type_all = 1) {
                         for ($k = 0; $k < sizeof($childareas[$list]); $k++) { //Iterate through each group of children
                             if (in_array($allowedarea[$j], $childareas[$list])) {
                                 return 1;
-                                break;
+//                                break;
                             }
                         }
                     }
@@ -92,6 +92,7 @@ $debug = FALSE;
 $sql = 'SELECT * FROM care_users u, care_user_roles ur WHERE u.role_id = ur.role_id '
         . 'AND login_id=\'' . addslashes($userid) . '\'';
 #print $sql.'<hr />';
+//echo $fileforward;
 if ($ergebnis = $db->Execute($sql)) {
     $zeile = $ergebnis->FetchRow();
 
@@ -109,7 +110,6 @@ if ($ergebnis = $db->Execute($sql)) {
                 if (empty($zeile['name']))
                     $zeile['name'] = ' ';
 
-
                 logentry($userid, $zeile['name'], "IP:" . $_SERVER['REMOTE_ADDR'] . " $lognote ", $thisfile, $fileforward);
 
                 /**
@@ -126,7 +126,7 @@ if ($ergebnis = $db->Execute($sql)) {
                 setcookie($userck . $sid, $zeile['name'], 0, '/');
                 //setcookie('ck_2level_sid'.$sid,$ciphersid);
                 //setcookie($userck.$sid,$zeile['name']);
-                //echo $fileforward;
+//                echo $fileforward;
                 $_SESSION['sess_user_name'] = $zeile['name'];
 
                 header('Location: ' . strtr($fileforward, ' ', '+') . '&checkintern=' . $checkintern);

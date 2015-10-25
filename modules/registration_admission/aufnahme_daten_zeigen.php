@@ -48,7 +48,7 @@ $glob_obj = new GlobalConfig($GLOBAL_CONFIG);
 $glob_obj->getConfig('patient_%');
 $glob_obj->getConfig('person_foto_path');
 
-$updatefile = 'aufnahme_start.php';
+$updatefile = 'aufnahme_pass.php';
 
 /* Default path for fotos. Make sure that this directory exists! */
 $default_photo_path = $root_path . 'fotos/registration';
@@ -269,7 +269,6 @@ $smarty->assign('LDCaseNr', $LDCaseNr);
 $smarty->assign('encounter_nr', $encounter_nr);
 
 # Create the encounter barcode image
-
 //if (file_exists($root_path . 'cache/barcodes/en_' . $encounter_nr . '.png')) {
 //    $smarty->assign('sEncBarcode', '<img src="' . $root_path . 'cache/barcodes/en_' . $encounter_nr . '.png" border=0 width=180 height=35>');
 //} else {
@@ -501,9 +500,9 @@ if (!$is_discharged) {
 
 $smarty->assign('pbBottomClose', '<a href="' . $breakfile . '"><img ' . createLDImgSrc($root_path, 'close2.gif', '0') . '  title="' . $LDCancel . '"  align="absmiddle"></a>');
 
-$smarty->assign('sAdmitLink', '<img ' . createComIcon($root_path, 'varrow.gif', '0') . '> <a href="aufnahme_start.php' . URL_APPEND . '&mode=?">' . $LDAdmWantEntry . '</a>');
-$smarty->assign('sSearchLink', '<img ' . createComIcon($root_path, 'varrow.gif', '0') . '> <a href="aufnahme_daten_such.php' . URL_APPEND . '">' . $LDAdmWantSearch . '</a>');
-$smarty->assign('sArchiveLink', '<img ' . createComIcon($root_path, 'varrow.gif', '0') . '> <a href="aufnahme_list.php' . URL_APPEND . '&newdata=1">' . $LDAdmWantArchive . '</a>');
+$smarty->assign('sAdmitLink', '<img ' . createComIcon($root_path, 'varrow.gif', '0') . '> <a href="patient_register_pass.php' . URL_APPEND . '&target=search&mode=?">' . $LDAdmWantEntry . '</a>');
+$smarty->assign('sSearchLink', '<img ' . createComIcon($root_path, 'varrow.gif', '0') . '> <a href="aufnahme_pass.php' . URL_APPEND . '&target=search">' . $LDAdmWantSearch . '</a>');
+$smarty->assign('sArchiveLink', '<img ' . createComIcon($root_path, 'varrow.gif', '0') . '> <a href="aufnahme_pass.php' . URL_APPEND . '&target=archiv&newdata=1">' . $LDAdmWantArchive . '</a>');
 
 $smarty->assign('sMainBlockIncludeFile', 'registration_admission/admit_show.tpl');
 

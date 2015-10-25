@@ -60,7 +60,7 @@ if(is_object($OR_info)){
 <ul>
 <?php if($rows) : ?>
 
-<img <?php echo createMascot($root_path,'mascot1_r.gif','0','bottom') ?> align="absmiddle"><font class="prompt">
+<img <?php echo createMascot($root_path,'mascot1_r.gif','0','bottom') ?> align="absmiddle"><font class="""prompt">
 <b><?php echo str_replace("~station~",strtoupper($station),$LDStationExists) ?></b></font><p>
 <?php endif;?>
 <?php echo $LDEnterAllFields ?>
@@ -68,34 +68,34 @@ if(is_object($OR_info)){
 <form action="or_new.php" method="post" name="newstat">
 
 <table border=0 cellpadding=4>
-<tbody class="submenu">
+<tbody class="""submenu">
   <tr>
-    <td class= align=right bgColor="#eeeeee"><?php echo $LDORNr ?>: </td>
-    <td class= bgColor="#f9f9f9">
+    <td class="""" align=right bgColor="#eeeeee"><?php echo $LDORNr ?>: </td>
+    <td class="" bgColor="#f9f9f9">
 	<?php 	
 		echo $ORoom['room_nr'];
  	?>
 </td>
   </tr> 
   <tr>
-    <td class= align=right bgColor="#eeeeee"><?php echo $LDOPTableNr ?>: </td>
-    <td class= bgColor="#f9f9f9"><?php echo $ORoom['nr_of_beds'] ?>
+    <td class="" align=right bgColor="#eeeeee"><?php echo $LDOPTableNr ?>: </td>
+    <td class="" bgColor="#f9f9f9"><?php echo $ORoom['nr_of_beds'] ?>
 </td>
   </tr> 
   
   <tr>
-    <td class= align=right bgColor="#eeeeee"><?php echo $LDDateCreation ?>: </td>
-    <td class= bgColor="#f9f9f9"><?php echo formatDate2Local($ORoom['date_create'],$date_format) ?>
+    <td class="" align=right bgColor="#eeeeee"><?php echo $LDDateCreation ?>: </td>
+    <td class="" bgColor="#f9f9f9"><?php echo formatDate2Local($ORoom['date_create'],$date_format) ?>
 </td>
   </tr>
   <tr>
-    <td class= align=right bgColor="#eeeeee"><?php echo $LDORName ?>: </td>
-    <td class= bgColor="#f9f9f9"><?php echo $ORoom['info'] ?>
+    <td class="" align=right bgColor="#eeeeee"><?php echo $LDORName ?>: </td>
+    <td class="" bgColor="#f9f9f9"><?php echo $ORoom['info'] ?>
 </td>
   </tr>
   <tr>
-    <td class= align=right bgColor="#eeeeee"><?php echo $LDOwnerWard ?>: </td>
-    <td class= bgColor="#f9f9f9">
+    <td class="" align=right bgColor="#eeeeee"><?php echo $LDOwnerWard ?>: </td>
+    <td class="" bgColor="#f9f9f9">
 <?php
 if(!empty($ORoom['ward_id'])){
 	if(defined('SHOW_COMBINE_WARDIDNAME')&&SHOW_COMBINE_WARDIDNAME){
@@ -113,8 +113,8 @@ if(!empty($ORoom['ward_id'])){
   </tr>
 
 <tr>
-    <td class= align=right bgColor="#eeeeee"><?php echo $LDOwnerDept ?>: </td>
-    <td class= bgColor="#f9f9f9"><?php 
+    <td class="" align=right bgColor="#eeeeee"><?php echo $LDOwnerDept ?>: </td>
+    <td class="" bgColor="#f9f9f9"><?php 
 								if(isset($$ORoom['LD_var'])&&!empty($$ORoom['LD_var'])) echo $$ORoom['LD_var'];
 									else echo $ORoom['deptname'];
 							?>
@@ -122,8 +122,8 @@ if(!empty($ORoom['ward_id'])){
   </tr>
    
   <tr>
-    <td class= align=right bgColor="#eeeeee"><?php echo $LDTempClosed ?>: </td>
-    <td class= bgColor="#f9f9f9"><?php 
+    <td class="" align=right bgColor="#eeeeee"><?php echo $LDTempClosed ?>: </td>
+    <td class="" bgColor="#f9f9f9"><?php 
 								if($ORoom['is_temp_closed']) echo $LDYes;
 									else echo $LDNo;
 							?>

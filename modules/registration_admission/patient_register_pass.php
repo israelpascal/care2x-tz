@@ -29,8 +29,12 @@ switch ($target) {
         break;
     case 'update':
         $allowedarea = $allow_area['admit_write'];
+        if (isset($_POST['pid'])) {
+            $pid = $_POST['pid'];
+        }
         $fileforward = 'patient_register.php' . $append . '&origin=pass&target=update&pid=' . $pid . '&update=1';
         $lognote = 'Patient register ok';
+        $target = 'update';
         break;
     case 'search':
         $allowedarea = $allow_area['admit_read'];
@@ -45,6 +49,7 @@ switch ($target) {
     default:
         $allowedarea = $allow_area['admit_read'];
         $fileforward = 'patient_register_search.php' . $append . '&origin=pass&target=search';
+        $target = 'search';
         $lognote = 'Patient register search ok';
 }
 
@@ -60,7 +65,7 @@ require($root_path . 'include/inc_2level_reset.php');
 setcookie(ck_2level_sid . $sid, '', 0, '/');
 
 require($root_path . 'include/inc_passcheck_internchk.php');
-$pass = check;
+//$pass = check;
 
 if ($pass == 'check')
     include($root_path . 'include/inc_passcheck.php');
@@ -89,7 +94,7 @@ if (!$cfg['dhtml']) {
                     break;
                 case 'archiv':$buf = $LDPatient . ' :: ' . $LDAdvancedSearch;
                     break;
-                default: $target = 'entry';
+                default:
                     $buf = $LDPatient . ' :: ' . $LDRegistration;
             }
 
@@ -161,13 +166,13 @@ if (!$cfg['dhtml']) {
 
 <!-- <p>
         <?php if ($target != "entry") : ?>
-                                                            <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=entry"><?php echo $LDAdmWantEntry ?></a><br>
+                                                                                        <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=entry"><?php echo $LDAdmWantEntry ?></a><br>
         <?php endif; ?>
         <?php if ($target != "search") : ?>
-                                                            <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=search"><?php echo $LDAdmWantSearch ?></a><br>
+                                                                                        <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=search"><?php echo $LDAdmWantSearch ?></a><br>
         <?php endif; ?>
         <?php if ($target != "archiv") : ?>
-                                                            <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=archiv"><?php echo $LDAdmWantArchive ?></a><br>
+                                                                                        <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=archiv"><?php echo $LDAdmWantArchive ?></a><br>
         <?php endif; ?>
 <img <?php echo createComIcon($root_path, 'frage.gif', '0', 'absmiddle') ?>> <a href="javascript:gethelp('admission_how2start.php','<?php echo $target ?>','entry')"><?php echo $LDAdmHow2Enter ?></a><br>
 <img <?php echo createComIcon($root_path, 'frage.gif', '0', 'absmiddle') ?>> <a href="javascript:gethelp('admission_how2start.php','<?php echo $target ?>','search')"><?php echo $LDAdmHow2Search ?></a><br>

@@ -16,12 +16,42 @@ define('NO_2LEVEL_CHK', 1);
 require_once($root_path . 'include/inc_front_chain_lang.php');
 
 require_once($root_path . 'global_conf/areas_allow.php');
-$allowedarea = &$allow_area['admit_all'];
+//$allowedarea = &$allow_area['outp_read'];
 $append = URL_REDIRECT_APPEND;
 
-$fileforward = 'amb_clinic_patients.php' . $append . '&origin=pass&target=list&dept_nr=' . $dept_nr;
-$lognote = $LDAppointments . 'ok';
-
+//echo $target;
+switch ($target) {
+    case 'list':
+        $allowedarea = &$allow_area['outp_write'];
+        $fileforward = 'amb_clinic_patients.php' . $append . '&origin=pass&target=list&dept_nr=' . $dept_nr;
+        $lognote = $LDAppointments . 'ok';
+        break;
+    case 'diagnosis':
+        $allowedarea = &$allow_area['test_read'];
+        $fileforward = 'amb_clinic_diagnosis_list.php' . $append . '&origin=pass&dept=' . urlencode($dept) . '&dept_nr=' . $dept_nr . '&target=diagnosis';
+        $lognote = 'ok';
+        break;
+    case 'pharmacy':
+        $allowedarea = &$allow_area['pharma_read'];
+        $fileforward = 'amb_clinic_pharmacy_list.php' . $append . '&origin=pass&dept=' . urlencode($dept) . '&dept_nr=' . $dept_nr . '&target=diagnosis';
+        $lognote = 'ok';
+        break;
+    case 'laboratory':
+        $allowedarea = &$allow_area['test_receive'];
+        $fileforward = 'amb_clinic_laboratory_list.php' . $append . '&origin=pass&dept=' . urlencode($dept) . '&dept_nr=' . $dept_nr . '&target=diagnosis';
+        $lognote = 'ok';
+        break;
+    case 'radiology':
+        $allowedarea = &$allow_area['radio_read'];
+        $fileforward = 'amb_clinic_radiology_list.php' . $append . '&origin=pass&dept=' . urlencode($dept) . '&dept_nr=' . $dept_nr . '&target=diagnosis';
+        $lognote = 'ok';
+        break;
+    default:
+        $allowedarea = &$allow_area['outp_read'];
+        $fileforward = 'amb_clinic_patients.php' . $append . '&origin=pass&dept_nr=' . $dept_nr;
+        $lognote = $LDAppointments . 'ok';
+        break;
+}
 $thisfile = basename($_SERVER['PHP_SELF']);
 # Set the break (return) file
 switch ($_SESSION['sess_user_origin']) {

@@ -31,17 +31,22 @@ if (!defined('ADMISSION_EXT_TABS') || !ADMISSION_EXT_TABS) {
 switch ($target) {
     case 'entry':
         $allowedarea = &$allow_area['admit_write'];
-        $fileforward = 'aufnahme_start.php' . $append;
+        $fileforward = 'aufnahme_start.php' . $append . '&target=entry';
         $lognote = 'Admission ok';
         break;
     case 'admitip':
         $allowedarea = &$allow_area['admit_write'];
-        $fileforward = 'aufnahme_start.php' . $append . "&pid=$pid&origin=patreg_reg&encounter_class_nr=1";
+        $fileforward = 'aufnahme_start.php' . $append . "&pid=$pid&origin=patreg_reg&target=admitip&encounter_class_nr=1";
         $lognote = 'Admission ok';
         break;
     case 'admitop':
         $allowedarea = &$allow_area['admit_write'];
-        $fileforward = 'aufnahme_start.php' . $append . "&pid=$pid&origin=patreg_reg&encounter_class_nr=2";
+        $fileforward = 'aufnahme_start.php' . $append . "&pid=$pid&origin=patreg_reg&target=admitop&encounter_class_nr=2";
+        $lognote = 'Admission ok';
+        break;
+    case 'update':
+        $allowedarea = &$allow_area['admit_write'];
+        $fileforward = 'aufnahme_start.php' . $append . "&pid=$pid&origin=patreg_reg&encounter_nr=" . $_SESSION['sess_en'] . '&target=update';
         $lognote = 'Admission ok';
         break;
     case 'search':
@@ -56,7 +61,10 @@ switch ($target) {
         break;
     case 'admitdata':
         $allowedarea = $allow_area['admit_write'];
-        $fileforward = 'aufnahme_daten_zeigen.php' . $append . "&encounter_nr=$encounter_nr" . '&origin=pass&target=admitdata';
+        if (isset($_POST['encounter_nr'])) {
+            $pid = $_POST['encounter_nr'];
+        }
+        $fileforward = 'aufnahme_daten_zeigen.php' . $append . "&encounter_nr=$encounter_nr" . '&origin=pass' . "&fwd_nr=$encounter_nr" . '&target=admitdata';
         $lognote = 'Patient  register archive ok';
         break;
     default:
@@ -105,7 +113,7 @@ if (!$cfg['dhtml']) {
                 break;
             case 'archiv':$buf = $LDAdmTargetArchive;
                 break;
-            default: $target = "entry";
+            default:
                 $buf = $LDAdmission;
         }
 

@@ -24,7 +24,7 @@ require_once($root_path.'include/inc_front_chain_lang.php');
 	A:hover {text-decoration: underline; color: red; }
 	A:visited {text-decoration: none;}
 
-}
+/*}*/
 
 </style>
 

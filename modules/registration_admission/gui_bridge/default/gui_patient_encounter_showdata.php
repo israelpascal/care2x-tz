@@ -16,9 +16,11 @@ require($root_path . 'include/inc_css_a_hilitebu.php');
 </HEAD>
 
 <BODY bgcolor="<?php echo $cfg['body_bgcolor']; ?>" topmargin=0 leftmargin=0 marginwidth=0 marginheight=0 
-      <?php if (!$cfg['dhtml']) {
-          echo 'link=' . $cfg['body_txtcolor'] . ' alink=' . $cfg['body_alink'] . ' vlink=' . $cfg['body_txtcolor'];
-      } ?>>
+<?php
+if (!$cfg['dhtml']) {
+    echo 'link=' . $cfg['body_txtcolor'] . ' alink=' . $cfg['body_alink'] . ' vlink=' . $cfg['body_txtcolor'];
+}
+?>>
 
 
     <table width=100% border=0 cellspacing=0 cellpadding=0>
@@ -29,11 +31,11 @@ require($root_path . 'include/inc_css_a_hilitebu.php');
             </td>
             <td bgcolor="<?php echo $cfg['top_bgcolor']; ?>" align="right">
                 <a href="javascript:gethelp('admission_show.php','<?php echo $from ?>')"><img <?php echo createLDImgSrc($root_path, 'hilfe-r.gif', '0') ?>  <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a><a href="<?php
-                                                                                                                                                                                                                                                                                         if ($_COOKIE['ck_login_logged' . $sid])
-                                                                                                                                                                                                                                                                                             echo $root_path . 'main/startframe.php?sid=' . $sid . '&lang=' . $lang;
-                                                                                                                                                                                                                                                                                         else
-                                                                                                                                                                                                                                                                                             echo "aufnahme_pass.php?sid=$sid&target=entry&lang=$lang";
-                                                                                                                                                                                                                                                                                         ?>"><img <?php echo createLDImgSrc($root_path, 'close2.gif', '0') ?> alt="<?php echo $LDCloseWin ?>"   <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a>
+                if ($_COOKIE['ck_login_logged' . $sid])
+                    echo $root_path . 'main/startframe.php?sid=' . $sid . '&lang=' . $lang;
+                else
+                    echo "aufnahme_pass.php?sid=$sid&target=entry&lang=$lang";
+                ?>"><img <?php echo createLDImgSrc($root_path, 'close2.gif', '0') ?> alt="<?php echo $LDCloseWin ?>"   <?php if ($cfg['dhtml']) echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)>'; ?></a>
             </td>
         </tr>
 
@@ -87,9 +89,9 @@ require($root_path . 'include/inc_css_a_hilitebu.php');
                             <td>&nbsp;</td>
                         </tr>
 
-    <?php
-}
-?>
+                        <?php
+                    }
+                    ?>
 
                     <tr>
                         <td>&nbsp;
@@ -159,11 +161,11 @@ require($root_path . 'include/inc_css_a_hilitebu.php');
                                                 <td background="<?php echo createBgSkin($root_path, 'tableHeaderbg3.gif'); ?>"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php echo $LDFirstName ?>:
                                                 </td>
                                                 <td bgcolor="#ffffee"><FONT SIZE=-1  FACE="Arial" color="#800000">&nbsp;<b><?php echo $name_first; ?></b>
-<?php
+                                                    <?php
 # If person is dead show a black cross
-if ($death_date && $death_date != '0000-00-00' && $death_date != '0001-01-01')
-    echo '&nbsp;<img ' . createComIcon($root_path, 'blackcross_sm.gif', '0') . '>';
-?>
+                                                    if ($death_date && $death_date != '0000-00-00' && $death_date != '0001-01-01')
+                                                        echo '&nbsp;<img ' . createComIcon($root_path, 'blackcross_sm.gif', '0') . '>';
+                                                    ?>
                                                 </td>
                                             </tr>
 
@@ -171,15 +173,18 @@ if ($death_date && $death_date != '0000-00-00' && $death_date != '0001-01-01')
                                                 <td background="<?php echo createBgSkin($root_path, 'tableHeaderbg3.gif'); ?>"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php echo $LDBday ?>:
                                                 </td>
                                                 <td bgcolor="#ffffee"><FONT SIZE=-1  FACE="Arial" color="#800000"><FONT SIZE=-1  FACE="Arial">&nbsp;<b><?php echo formatDate2Local($date_birth, $date_format); ?></b>
-<?php
+                                                    <?php
 # If person is dead show a black cross
-if ($death_date && $death_date != '0000-00-00' && $death_date != '0001-01-01') {
-    echo '&nbsp;<img ' . createComIcon($root_path, 'blackcross_sm.gif', '0') . '>&nbsp;<font color="#000000">' . formatDate2Local($death_date, $date_format) . '</font>';
-}
-?>
+                                                    if ($death_date && $death_date != '0000-00-00' && $death_date != '0001-01-01') {
+                                                        echo '&nbsp;<img ' . createComIcon($root_path, 'blackcross_sm.gif', '0') . '>&nbsp;<font color="#000000">' . formatDate2Local($death_date, $date_format) . '</font>';
+                                                    }
+                                                    ?>
                                                 </td>
-                                                <td bgcolor="#ffffee"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php echo $LDSex ?>: <?php if ($sex == 'm') echo $LDMale;
-elseif ($sex == 'f') echo $LDFemale; ?>
+                                                <td bgcolor="#ffffee"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php echo $LDSex ?>: <?php if ($sex == 'm')
+                                                        echo $LDMale;
+                                                    elseif ($sex == 'f')
+                                                        echo $LDFemale;
+                                                    ?>
                                                 </td>
                                             </tr>
 
@@ -187,12 +192,12 @@ elseif ($sex == 'f') echo $LDFemale; ?>
                                                 <td background="<?php echo createBgSkin($root_path, 'tableHeaderbg3.gif'); ?>"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php echo $LDBloodGroup ?>:
                                                 </td>
                                                 <td bgcolor="#ffffee" colspan=2><FONT SIZE=-1  FACE="Arial">&nbsp;
-<?php
-if ($blood_group) {
-    $buf = 'LD' . $blood_group;
-    echo $$buf;
-}
-?>
+                                                    <?php
+                                                    if ($blood_group) {
+                                                        $buf = 'LD' . $blood_group;
+                                                        echo $$buf;
+                                                    }
+                                                    ?>
                                                 </td>
                                             </tr>
 
@@ -238,9 +243,9 @@ if ($blood_group) {
                                                 </td>
                                             </tr>
 
-                                                    <?php
-                                                    if ($encounter_class_nr == 1) {
-                                                        ?>
+<?php
+if ($encounter_class_nr == 1) {
+    ?>
                                                 <tr bgcolor="white">
                                                     <td background="<?php echo createBgSkin($root_path, 'tableHeaderbg3.gif'); ?>"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php echo $LDWard ?>:
                                                     </td>
@@ -256,9 +261,9 @@ if ($blood_group) {
                                                         ?>
                                                     </td>
                                                 </tr>
-                                                        <?php
-                                                    } elseif ($encounter_class_nr == 2) {
-                                                        ?>
+    <?php
+} elseif ($encounter_class_nr == 2) {
+    ?>
                                                 <tr bgcolor="white">
                                                     <td background="<?php echo createBgSkin($root_path, 'tableHeaderbg3.gif'); ?>"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php echo "$LDClinic/$LDDepartment" ?>:
                                                     </td>
@@ -308,10 +313,10 @@ if ($blood_group) {
                                                 <td background="<?php echo createBgSkin($root_path, 'tableHeaderbg3.gif'); ?>"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php echo $LDBillType ?>:
                                                 </td>
                                                 <td colspan=2 bgcolor="#eeeeee"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php
-if (isset($$insurance_class['LD_var']) && !empty($$insurance_class['LD_var']))
-    echo $$insurance_class['LD_var'];
-else
-    echo $insurance_class['name'];
+                                                    if (isset($$insurance_class['LD_var']) && !empty($$insurance_class['LD_var']))
+                                                        echo $$insurance_class['LD_var'];
+                                                    else
+                                                        echo $insurance_class['name'];
 ?></td>
                                             </tr>
 
@@ -358,9 +363,9 @@ else
                                               } */
                                             ?>
 
-                                                    <?php
-                                                    if (!$GLOBAL_CONFIG['patient_service_care_hide']) {
-                                                        ?>
+<?php
+if (!$GLOBAL_CONFIG['patient_service_care_hide']) {
+    ?>
                                                 <tr bgcolor="white">
                                                     <td background="<?php echo createBgSkin($root_path, 'tableHeaderbg3.gif'); ?>"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php echo $LDCareServiceClass ?>:
                                                     </td>
@@ -379,54 +384,54 @@ else
                                                         ?>
                                                     </td>
                                                 </tr>
-    <?php
-}
-?>
+                                                <?php
+                                            }
+                                            ?>
 
-                                                    <?php
-                                                    if (!$GLOBAL_CONFIG['patient_service_room_hide']) {
-                                                        ?>
+<?php
+if (!$GLOBAL_CONFIG['patient_service_room_hide']) {
+    ?>
                                                 <tr bgcolor="white">
                                                     <td background="<?php echo createBgSkin($root_path, 'tableHeaderbg3.gif'); ?>"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php echo $LDRoomServiceClass ?>:
                                                     </td>
                                                     <td colspan=2><FONT SIZE=-1  FACE="Arial">
-    <?php
-    while ($buffer = $room_service->FetchRow()) {
-        if ($sc_room_class_nr == $buffer['class_nr']) {
-            if (empty($$buffer['LD_var']))
-                echo $buffer['name'];
-            else
-                echo $$buffer['LD_var'];
-        }
-    }
-    if ($sc_room_start && $sc_room_start != '0000-00-00')
-        echo ' [ ' . formatDate2Local($sc_room_start, $date_format) . ' ] ' . $LDTo . ' [ ' . formatDate2Local($sc_room_end, $date_format) . ' ]';
-    ?>
+                                                        <?php
+                                                        while ($buffer = $room_service->FetchRow()) {
+                                                            if ($sc_room_class_nr == $buffer['class_nr']) {
+                                                                if (empty($$buffer['LD_var']))
+                                                                    echo $buffer['name'];
+                                                                else
+                                                                    echo $$buffer['LD_var'];
+                                                            }
+                                                        }
+                                                        if ($sc_room_start && $sc_room_start != '0000-00-00')
+                                                            echo ' [ ' . formatDate2Local($sc_room_start, $date_format) . ' ] ' . $LDTo . ' [ ' . formatDate2Local($sc_room_end, $date_format) . ' ]';
+                                                        ?>
                                                     </td>
                                                 </tr>
-                                                        <?php
-                                                    }
-                                                    ?>
+                                                <?php
+                                            }
+                                            ?>
 
-                                                    <?php
-                                                    if (!$GLOBAL_CONFIG['patient_service_att_dr_hide']) {
-                                                        ?>
+<?php
+if (!$GLOBAL_CONFIG['patient_service_att_dr_hide']) {
+    ?>
                                                 <tr bgcolor="white">
                                                     <td background="<?php echo createBgSkin($root_path, 'tableHeaderbg3.gif'); ?>"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php echo $LDAttDrServiceClass ?>:
                                                     </td>
                                                     <td colspan=2><FONT SIZE=-1  FACE="Arial">
-                                                <?php
-                                                while ($buffer = $att_dr_service->FetchRow()) {
-                                                    if ($sc_att_dr_class_nr == $buffer['class_nr']) {
-                                                        if (empty($$buffer['LD_var']))
-                                                            echo $buffer['name'];
-                                                        else
-                                                            echo $$buffer['LD_var'];
-                                                    }
-                                                }
-                                                if ($sc_att_dr_start && $sc_att_dr_start != '0000-00-00')
-                                                    echo ' [ ' . formatDate2Local($sc_att_dr_start, $date_format) . ' ] ' . $LDTo . ' [ ' . formatDate2Local($sc_att_dr_end, $date_format) . ' ]';
-                                                ?> 
+                                                        <?php
+                                                        while ($buffer = $att_dr_service->FetchRow()) {
+                                                            if ($sc_att_dr_class_nr == $buffer['class_nr']) {
+                                                                if (empty($$buffer['LD_var']))
+                                                                    echo $buffer['name'];
+                                                                else
+                                                                    echo $$buffer['LD_var'];
+                                                            }
+                                                        }
+                                                        if ($sc_att_dr_start && $sc_att_dr_start != '0000-00-00')
+                                                            echo ' [ ' . formatDate2Local($sc_att_dr_start, $date_format) . ' ] ' . $LDTo . ' [ ' . formatDate2Local($sc_att_dr_end, $date_format) . ' ]';
+                                                        ?> 
                                                     </td>
                                                 </tr>
     <?php
@@ -436,8 +441,11 @@ else
                                             <tr bgcolor="white">
                                                 <td background="<?php echo createBgSkin($root_path, 'tableHeaderbg3.gif'); ?>"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php echo $LDAdmitBy ?>:
                                                 </td>
-                                                <td colspan=2 bgcolor="#eeeeee"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php if ($encoder != '') echo $encoder;
-                            else echo $_COOKIE[$local_user . $sid] ?> 
+                                                <td colspan=2 bgcolor="#eeeeee"><FONT SIZE=-1  FACE="Arial">&nbsp;<?php if ($encoder != '')
+    echo $encoder;
+else
+    echo $_COOKIE[$local_user . $sid]
+    ?> 
                                                 </td>
                                             </tr>
                                         </table>
@@ -474,9 +482,9 @@ require('./gui_bridge/default/gui_patient_encounter_showdata_options.php');
     </table>        
     <p>
         <FONT    SIZE=2  FACE="Arial">
-        <img <?php echo createComIcon($root_path, 'varrow.gif', '0') ?>> <a href="aufnahme_start.php<?php echo URL_APPEND; ?>&mode=?"><?php echo $LDAdmWantEntry ?></a><br>
-        <img <?php echo createComIcon($root_path, 'varrow.gif', '0') ?>> <a href="aufnahme_daten_such.php<?php echo URL_APPEND; ?>"><?php echo $LDAdmWantSearch ?></a><br>
-        <img <?php echo createComIcon($root_path, 'varrow.gif', '0') ?>> <a href="aufnahme_list.php<?php echo URL_APPEND; ?>&newdata=1"><?php echo $LDAdmWantArchive ?></a><br>
+        <img <?php echo createComIcon($root_path, 'varrow.gif', '0') ?>> <a href="patient_register_pass.php<?php echo URL_APPEND; ?>&target=entry&mode=?"><?php echo $LDAdmWantEntry ?></a><br>
+        <img <?php echo createComIcon($root_path, 'varrow.gif', '0') ?>> <a href="aufnahme_pass.php<?php echo URL_APPEND; ?>&target=search"><?php echo $LDAdmWantSearch ?></a><br>
+        <img <?php echo createComIcon($root_path, 'varrow.gif', '0') ?>> <a href="aufnahme_pass.php<?php echo URL_APPEND; ?>&target=archiv&newdata=1"><?php echo $LDAdmWantArchive ?></a><br>
 
     <p>
 <?php
