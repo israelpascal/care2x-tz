@@ -41,5 +41,8 @@ $childareas = array(
     '_a_2_billreports' => array('_a_2_billallread'),
     '_a_1_newsallwrite' => array('_a_2_newscafewrite', '_a_2_newsallmoderatedwrite'),
     '_a_1_allreportingread' => array('_a_2_reportingread', '_a_2_clinicreportingread', '_a_2_financialreportingread', '_a_2_systemreportingread'),
+    '_a_2_clinicreportingread' => array('_a_2_reportingread'),
+    '_a_2_financialreportingread' => array('_a_2_reportingread'),
+    '_a_2_systemreportingread' => array('_a_2_reportingread'),
 );
 ?>

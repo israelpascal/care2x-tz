@@ -6371,15 +6371,15 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
 			 //echo $sql_receipts_list;
 			 
 			 
-			 $total_ex_dep_items=0;
+			 
 			 while($rows_particlars=$receipts_list_result->FetchRow()){
 				 ?>
 				   <tr>
 					   <!-- list names-->
-                       <td width="70" scope="col" bgcolor="lightblue" > <?php   echo date('d-m-y',$rows_particlars['billed_date']);?></td> 
-                       <td width="70" scope="col" bgcolor="lightblue"> <?php  echo  date('d-m-y',strtotime($rows_particlars['admission_date']));?></td>
+                       <td width="70" scope="col" bgcolor="lightblue" > <?php   echo date('d.M.Y',$rows_particlars['billed_date']);?></td> 
+                       <td width="70" scope="col" bgcolor="lightblue"> <?php  echo  date('d.M.Y',strtotime($rows_particlars['admission_date']));?></td>
                        <td width="70" scope="col" bgcolor="lightblue"> <?php  echo  $rows_particlars['name_last'].' '.$rows_particlars['name_first'];?></td>
-                       <td width="70" scope="col" bgcolor="lightblue"> <?php  echo  date('d-m-y',strtotime($rows_particlars['date_birth']));?></td>
+                       <td width="70" scope="col" bgcolor="lightblue"> <?php  echo  date('d.M.Y',strtotime($rows_particlars['date_birth']));?></td>
                        <td width="70" scope="col" bgcolor="lightblue"> <?php  echo  $rows_particlars['selian_pid'];?></td>
                        <td width="70" scope="col" bgcolor="lightblue"> <?php  echo  $rows_particlars['membership_nr'];?></td>
                        <td width="70" scope="col" bgcolor="lightblue"> <?php  echo  $rows_particlars['form_nr'];?></td>
@@ -6487,7 +6487,7 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
 						   
 					    </tr>  
 					   
-					    <?php fputcsv($filename,array(date('d-m-y',$rows_particlars['billed_date']),date('d-m-y',strtotime($rows_particlars['admission_date'])),$rows_particlars['name_last'].' '.$rows_particlars['name_first'],date('d-m-y',strtotime($rows_particlars['date_birth'])),$rows_particlars['selian_pid'],$rows_particlars['membership_nr'],$rows_particlars['form_nr'],$rows_items['partcode'],$rows_items['description'],$class['purch_class'],$rows_items['amount'],$rows_items['total_price'],'Null')); ?>
+					    <?php fputcsv($filename,array(date('d.M.Y',$rows_particlars['billed_date']),date('d.M.Y',strtotime($rows_particlars['admission_date'])),$rows_particlars['name_last'].' '.$rows_particlars['name_first'],date('d.M.Y',strtotime($rows_particlars['date_birth'])),$rows_particlars['selian_pid'],$rows_particlars['membership_nr'],$rows_particlars['form_nr'],$rows_items['partcode'],$rows_items['description'],$class['purch_class'],$rows_items['amount'],$rows_items['total_price'],'Null')); ?>
 					 <?php    
 					 }//end while $rows_items            
 				               
@@ -6498,7 +6498,7 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
 			              <?php fputcsv($filename,array(' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ')); ?>
 			              
 				   <?php
-				     $total_ex_dep_items+=$total_items;
+				     
 				 }//end while $rows_receipt_list
 			 
 			                      
@@ -6527,10 +6527,10 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
 			    $class['purch_class']='DEPOSIT';
 			    ?>
 			     <tr>        
-                          <td width="70" scope="col" font-size="8"> <?php   echo  date('d-m-y',$rows_dep['billed_date']);?></td>
-                          <td width="70" scope="col" font-size="8"> <?php   echo  date('d-m-y',strtotime($rows_dep['encounter_date']));?></td>
+                          <td width="70" scope="col" font-size="8"> <?php   echo  date('d.M.y',$rows_dep['billed_date']);?></td>
+                          <td width="70" scope="col" font-size="8"> <?php   echo  date('d.M.y',strtotime($rows_dep['encounter_date']));?></td>
                           <td width="70" scope="col" font-size="8"> <?php   echo  $rows_dep['name_last'].' '.$rows_dep['name_first'];?></td>
-                          <td width="70" scope="col" font-size="8"> <?php   echo  date('d-m-y',strtotime($rows_dep['date_birth']));?></td>
+                          <td width="70" scope="col" font-size="8"> <?php   echo  date('d.M.y',strtotime($rows_dep['date_birth']));?></td>
                           <td width="70" scope="col" font-size="8"> <?php   echo  $rows_dep['selian_pid'];?></td>
                           <td width="70" scope="col" font-size="8"> <?php   echo  $rows_dep['membership_nr'];?></td>
                           <td width="70" scope="col" font-size="8"> <?php   echo  $rows_dep['form_nr'];?></td>
@@ -6541,7 +6541,7 @@ fputcsv($filename, array($LDBilled_date,$LDAdmission_date,$LDPatient,$LDBirthDat
                           <td width="70" scope="col" font-size="8"> <?php   //echo  $rows_dep['price'];?></td>
                           <td width="70" scope="col" font-size="8"> <?php   echo  $rows_dep['price'];?></td>
                  </tr>
-                    <?php fputcsv($filename,array(date('d-m-y',$rows_dep['billed_date']),date('d-m-y',strtotime($rows_dep['encounter_date'])),$rows_dep['name_last'].' '.$rows_dep['name_first'],date('d-m-y',strtotime($rows_dep['date_birth'])),$rows_dep['selian_pid'],$rows_dep['membership_nr'],$rows_dep['form_nr'],$rows_dep['partcode'],$class['purch_class'],$class['purch_class'],$rows_dep['amount'],'Null',$rows_dep['price'])); ?>
+                    <?php fputcsv($filename,array(date('d.M.y',$rows_dep['billed_date']),date('d.M.y',strtotime($rows_dep['encounter_date'])),$rows_dep['name_last'].' '.$rows_dep['name_first'],date('d.M.y',strtotime($rows_dep['date_birth'])),$rows_dep['selian_pid'],$rows_dep['membership_nr'],$rows_dep['form_nr'],$rows_dep['partcode'],$class['purch_class'],$class['purch_class'],$rows_dep['amount'],'Null',$rows_dep['price'])); ?>
                     <?php
 			    
 			  } 
@@ -6958,74 +6958,7 @@ fclose($filename);
 	
 	}
 //*************************************************************************************************************************************************	
-function MtuhaDiagnosisBlocks($nr){
-	global $db;
-	
-    $TABLE ='<TABLE BORDER=2 CELLPADDING=4>';
-	
-	//for($k=1; $k<=3; $k++){
-		$TABLE.='<TR>';
-	for($i=1; $i<=$nr; $i++){
-			
-		$TABLE.="<TH COLSPAN=15 >AGE: FROM<input size=\"3\" type=\"text\" name=\"start$i\" id=\"start$i\" >TO<input size=\"2\" type=\"text\" name=\"end$i\" id=\"end$i\" onchange=\"ValidateAge($i)\" ></TH>";
-		
-	}
-	$TABLE.='</TR><TR>';
-		for($i=1; $i<=$nr; $i++){ 
-	    $TABLE.='<TD colspan=3 BGCOLOR=#99CCFF>CASES</TD><TD colspan=3>DEATHS</TD><TD colspan=3 BGCOLOR=#99CCFF>NEW PATIENT</TD><TD colspan=3>NEW CASE</TD><TD colspan=3 BGCOLOR=#99CCFF>REVISIT</TD>';
-	}
-	$TABLE.='</TR><TR>';
-		for($i=1; $i<=$nr; $i++){
-		$TABLE.='<TD BGCOLOR=#99CCFF>M</TD><TD BGCOLOR=#99CCFF>F</TD><TD BGCOLOR=#99CCFF>TOTAL</TD>
-        <TD>M</TD><TD>F</TD><TD>TOTAL</TD><TD BGCOLOR=#99CCFF>M</TD><TD BGCOLOR=#99CCFF>F</TD><TD BGCOLOR=#99CCFF>TOTAL</TD><TD>M</TD><TD>F</TD><TD>TOTAL</TD><TD BGCOLOR=#99CCFF>M</TD><TD BGCOLOR=#99CCFF>F</TD><TD BGCOLOR=#99CCFF>TOTAL</TD>';
-        	
-	}  		 
-		$TABLE.='</TR>';	 
-			
-		//}
-		
-		
-		$TABLE.='</table>';
-		echo $TABLE;
-		
-		?>
-		<p id="values"></p>
-		<?php
-		
-	//*******************************************************************************************************************
-	
-	 $arr_date_from=explode("/",$_POST['date_from']);
-     $arr_date_to=explode("/",$_POST['date_to']);
-     $date_from_timestamp=mktime(00,00,00,$arr_date_from[1],$arr_date_from[0],$arr_date_from[2]);
-     $date_to_timestamp=mktime(23,59,59,$arr_date_to[1],$arr_date_to[0],$arr_date_to[2]);
-     
-     if($_POST['dept']=='all'){
-		 $DeptId='';
-		 }else{
-			 $DeptId=$_POST['dept'];
-			 }
-			 
-	 
-	
-	
-		 
-     
-     
-     
-     
-  
-    
-	
-	
-	
-	
-	
-	
-	//*******************************************************************************************************************
-	
-		
-        	
-	}//end mtuha diagnosis blocks
+
 
 }
 

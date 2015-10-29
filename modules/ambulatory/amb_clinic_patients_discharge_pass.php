@@ -53,9 +53,11 @@ require($root_path . 'include/inc_passcheck_head.php');
 ?>
 
 <BODY  onLoad="document.passwindow.userid.focus();" bgcolor=<?php echo $cfg['body_bgcolor']; ?>
-<?php if (!$cfg['dhtml']) {
+<?php
+if (!$cfg['dhtml']) {
     echo ' link=' . $cfg['idx_txtcolor'] . ' alink=' . $cfg['body_alink'] . ' vlink=' . $cfg['idx_txtcolor'];
-} ?>>
+}
+?>>
 
     <FONT    SIZE=-1  FACE="Arial">
 
@@ -90,7 +92,7 @@ require($root_path . 'include/inc_passcheck_head.php');
                     if ($target == "entry")
                         echo '<img ' . createLDImgSrc($root_path, 'admit-blue.gif', '0') . ' alt="' . $LDAdmit . '">';
                     else {
-                        echo'<a href="aufnahme_pass.php?sid=' . $sid . '&target=entry&lang=' . $lang . '"><img ' . createLDImgSrc($root_path, 'admit-gray.gif', '0') . ' alt="' . $LDAdmit . '"';
+                        echo'<a href="' . $root_path . 'modules/registration_admission/aufnahme_pass.php?sid=' . $sid . '&target=entry&lang=' . $lang . '"><img ' . createLDImgSrc($root_path, 'admit-gray.gif', '0') . ' alt="' . $LDAdmit . '"';
                         if ($cfg['dhtml'])
                             echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)';
                         echo '></a>';
@@ -100,7 +102,7 @@ require($root_path . 'include/inc_passcheck_head.php');
                 if ($target == "search")
                     echo '<img ' . createLDImgSrc($root_path, 'such-b.gif', '0') . ' alt="' . $LDSearch . '">';
                 else {
-                    echo '<a href="aufnahme_pass.php?sid=' . $sid . '&target=search&lang=' . $lang . '"><img ' . createLDImgSrc($root_path, 'such-gray.gif', '0') . ' alt="' . $LDSearch . '" ';
+                    echo '<a href="' . $root_path . 'modules/registration_admission/aufnahme_pass.php?sid=' . $sid . '&target=search&lang=' . $lang . '"><img ' . createLDImgSrc($root_path, 'such-gray.gif', '0') . ' alt="' . $LDSearch . '" ';
                     if ($cfg['dhtml'])
                         echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)';
                     echo '></a>';
@@ -108,7 +110,7 @@ require($root_path . 'include/inc_passcheck_head.php');
                 if ($target == "archiv")
                     echo '<img ' . createLDImgSrc($root_path, 'arch-blu.gif', '0') . '  alt="' . $LDArchive . '">';
                 else {
-                    echo '<a href="aufnahme_pass.php?sid=' . $sid . '&target=archiv&lang=' . $lang . '"><img ' . createLDImgSrc($root_path, 'arch-gray.gif', '0') . ' alt="' . $LDArchive . '" ';
+                    echo '<a href="' . $root_path . 'modules/registration_admission/aufnahme_pass.php?sid=' . $sid . '&target=archiv&lang=' . $lang . '"><img ' . createLDImgSrc($root_path, 'arch-gray.gif', '0') . ' alt="' . $LDArchive . '" ';
                     if ($cfg['dhtml'])
                         echo'style=filter:alpha(opacity=70) onMouseover=hilite(this,1) onMouseOut=hilite(this,0)';
                     echo '></a>';
@@ -117,34 +119,34 @@ require($root_path . 'include/inc_passcheck_head.php');
             </td>
         </tr>
 
-            <?php require($root_path . 'include/inc_passcheck_mask.php') ?>  
+        <?php require($root_path . 'include/inc_passcheck_mask.php') ?>  
 
         <p>
-<?php
+            <?php
 #
 # Starting at version 2.0.2, the "entry" target is ignored
 #
-/*
-  if($target!="entry") : ?>
-  <img <?php echo createComIcon($root_path,'update.gif','0','absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=entry"><?php echo $LDAdmWantEntry ?></a><br>
-  <?php
-  endif
- */
-?>
+            /*
+              if($target!="entry") : ?>
+              <img <?php echo createComIcon($root_path,'update.gif','0','absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=entry"><?php echo $LDAdmWantEntry ?></a><br>
+              <?php
+              endif
+             */
+            ?>
 
-<?php if ($target != "search") { ?>
-                <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=search"><?php echo $LDAdmWantSearch ?></a><br>
-<?php } ?>
-<?php if ($target != "archiv") { ?>
-                <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=archiv"><?php echo $LDAdmWantArchive ?></a><br>
-<?php } ?>
+            <?php if ($target != "search") { ?>
+                <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="<?php echo $root_path ?>modules/registration_admission/aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=search"><?php echo $LDAdmWantSearch ?></a><br>
+            <?php } ?>
+            <?php if ($target != "archiv") { ?>
+                <img <?php echo createComIcon($root_path, 'update.gif', '0', 'absmiddle') ?>> <a href="<?php echo $root_path ?>modules/registration_admission/aufnahme_pass.php?sid=<?php echo "$sid&lang=$lang" ?>&target=archiv"><?php echo $LDAdmWantArchive ?></a><br>
+            <?php } ?>
             <img <?php echo createComIcon($root_path, 'frage.gif', '0', 'absmiddle') ?>> <a href="javascript:gethelp('admission_how2start.php','<?php echo $target ?>','entry')"><?php echo $LDAdmHow2Enter ?></a><br>
             <img <?php echo createComIcon($root_path, 'frage.gif', '0', 'absmiddle') ?>> <a href="javascript:gethelp('admission_how2start.php','<?php echo $target ?>','search')"><?php echo $LDAdmHow2Search ?></a><br>
             <img <?php echo createComIcon($root_path, 'frage.gif', '0', 'absmiddle') ?>> <a href="javascript:gethelp('admission_how2start.php','<?php echo $target ?>','archiv')"><?php echo $LDAdmHow2Archive ?></a><br>
         <p>
-<?php
-require($root_path . 'include/inc_load_copyrite.php');
-?>
+            <?php
+            require($root_path . 'include/inc_load_copyrite.php');
+            ?>
 
             </FONT>
             </BODY>
